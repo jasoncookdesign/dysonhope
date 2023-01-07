@@ -1,0 +1,181 @@
+//
+// Font //
+//
+$font-family-primary: 'Open Sans', sans-serif;
+$font-family-secondary: 'Playfair Display', serif;
+$font-family-tertiary: 'Poppins', sans-serif;
+$font-weight-black: 900;
+$font-weight-extra-bold: 800;
+$font-weight-bold: 700;
+$font-weight-semi-bold: 600; 
+$font-weight-medium: 500;
+$font-weight-regular: 400;
+$font-weight-light: 300;
+$font-weight-extra-light: 200;
+$font-weight-thin: 100;
+
+//
+// Colors //
+//
+$color-dark: rgb(18, 21, 24);
+$color-dark-lighter: rgb(25, 28, 31);
+$color-dark-09: rgba(18, 21, 24, 0.9);
+$color-dark-08: rgba(18, 21, 24, 0.8);
+$color-dark-07: rgba(18, 21, 24, 0.7);
+$color-dark-06: rgba(18, 21, 24, 0.6);
+$color-dark-05: rgba(18, 21, 24, 0.5);
+$color-dark-04: rgba(18, 21, 24, 0.4);
+$color-dark-03: rgba(18, 21, 24, 0.3);
+$color-dark-02: rgba(18, 21, 24, 0.2);
+$color-dark-015: rgba(18, 21, 24, 0.15);
+$color-dark-01: rgba(18, 21, 24, 0.1);
+$color-dark-005: rgba(18, 21, 24, 0.05);
+$color-white-09: rgba(255, 255, 255, 0.9);
+$color-white-08: rgba(255, 255, 255, 0.8);
+$color-white-07: rgba(255, 255, 255, 0.7);
+$color-white-06: rgba(255, 255, 255, 0.6);
+$color-white-05: rgba(255, 255, 255, 0.5);
+$color-white-04: rgba(255, 255, 255, 0.4);
+$color-white-03: rgba(255, 255, 255, 0.3);
+$color-white-02: rgba(255, 255, 255, 0.2);
+$color-white-015: rgba(255, 255, 255, 0.15);
+$color-white-01: rgba(255, 255, 255, 0.1);
+$color-primary: #7C7C7C;
+$color-primary-lighter: #AAAAAA;
+$color-green: #24963e;
+$color-green-lighter: #28a745;
+$color-red: #c62f3e;
+$color-red-lighter: #dc3545;
+
+$color-purple: #B721FF;
+$color-blue: #0093E9;
+$color-pink-edge: #FE9AB6;
+$color-golden-yellow: #FFB657;
+$color-very-peri: #6667AB;
+$color-turquiose: #4cbfa6;
+$color-spring-red: #BE1F35;
+
+$color-facebook: #1877F2;
+$color-twitter: #1DA1F2;
+$color-instagram: #E4405F;
+$color-linkedin: #0A66C2;
+$color-youtube: #CD201F;
+$color-pinterest: #BD081C;
+$color-skype: #00AFF0;
+$color-dribbble: #EA4C89;
+$color-snapchat: #FFFC00;
+$color-whatsapp: #25D366;
+
+//
+// Background colors //
+//
+$bg-dark: rgb(24, 28, 32);
+$bg-dark-lighter: rgb(32, 36, 40);
+$bg-dark-lightest: rgb(40, 44, 48);
+$bg-dark-09: rgba(40, 44, 48, 0.9);
+$bg-dark-09: rgba(40, 44, 48, 0.9);
+$bg-dark-08: rgba(40, 44, 48, 0.8);
+$bg-dark-07: rgba(40, 44, 48, 0.7);
+$bg-dark-06: rgba(40, 44, 48, 0.6);
+$bg-dark-05: rgba(40, 44, 48, 0.5);
+$bg-dark-04: rgba(40, 44, 48, 0.4);
+$bg-dark-03: rgba(40, 44, 48, 0.3);
+$bg-dark-02: rgba(40, 44, 48, 0.2);
+$bg-dark-01: rgba(40, 44, 48, 0.1);
+$bg-gray: rgb(238, 242, 246);
+$bg-gray-lighter: rgb(241, 245, 249);
+$bg-gray-lightest: rgb(244, 248, 252);
+
+$bg-light-blue: #e2f2fb;
+$bg-light-purple: #F5E4FF;
+$bg-light-pink-edge: #FEE6ED;
+$bg-light-golden-yellow: #FFEFDB;
+$bg-light-very-peri: #EDEDF5;
+$bg-light-turquiose: #E2F4F0;
+$bg-light-spring-red: #F7E5E7;
+
+$bg-blue: #0093E9;
+$bg-blue-09: rgba(0, 147, 233, 0.9);
+$bg-blue-08: rgba(0, 147, 233, 0.8);
+$bg-blue-07: rgba(0, 147, 233, 0.7);
+$bg-blue-06: rgba(0, 147, 233, 0.6);
+$bg-blue-05: rgba(0, 147, 233, 0.5);
+$bg-blue-04: rgba(0, 147, 233, 0.4);
+$bg-blue-03: rgba(0, 147, 233, 0.3);
+$bg-blue-02: rgba(0, 147, 233, 0.2);
+$bg-blue-01: rgba(0, 147, 233, 0.1);
+$bg-purple: #B721FF;
+$bg-purple-09: rgba(183, 33, 255, 0.9);
+$bg-purple-08: rgba(183, 33, 255, 0.8);
+$bg-purple-07: rgba(183, 33, 255, 0.7);
+$bg-purple-06: rgba(183, 33, 255, 0.6);
+$bg-purple-05: rgba(183, 33, 255, 0.5);
+$bg-purple-04: rgba(183, 33, 255, 0.4);
+$bg-purple-03: rgba(183, 33, 255, 0.3);
+$bg-purple-02: rgba(183, 33, 255, 0.2);
+$bg-purple-01: rgba(183, 33, 255, 0.1);
+$bg-pink-edge: #FE9AB6;
+$bg-pink-edge-09: rgba(254, 154, 182, 0.9);
+$bg-pink-edge-08: rgba(254, 154, 182, 0.8);
+$bg-pink-edge-07: rgba(254, 154, 182, 0.7);
+$bg-pink-edge-06: rgba(254, 154, 182, 0.6);
+$bg-pink-edge-05: rgba(254, 154, 182, 0.5);
+$bg-pink-edge-04: rgba(254, 154, 182, 0.4);
+$bg-pink-edge-03: rgba(254, 154, 182, 0.3);
+$bg-pink-edge-02: rgba(254, 154, 182, 0.2);
+$bg-pink-edge-01: rgba(254, 154, 182, 0.1);
+$bg-golden-yellow: #FFB657;
+$bg-golden-yellow-09: rgba(255, 182, 87, 0.9);
+$bg-golden-yellow-08: rgba(255, 182, 87, 0.8);
+$bg-golden-yellow-07: rgba(255, 182, 87, 0.7);
+$bg-golden-yellow-06: rgba(255, 182, 87, 0.6);
+$bg-golden-yellow-05: rgba(255, 182, 87, 0.5);
+$bg-golden-yellow-04: rgba(255, 182, 87, 0.4);
+$bg-golden-yellow-03: rgba(255, 182, 87, 0.3);
+$bg-golden-yellow-02: rgba(255, 182, 87, 0.2);
+$bg-golden-yellow-01: rgba(255, 182, 87, 0.1);
+$bg-very-peri: #6667AB;
+$bg-very-peri-09: rgba(102, 103, 171, 0.9);
+$bg-very-peri-08: rgba(102, 103, 171, 0.8);
+$bg-very-peri-07: rgba(102, 103, 171, 0.7);
+$bg-very-peri-06: rgba(102, 103, 171, 0.6);
+$bg-very-peri-05: rgba(102, 103, 171, 0.5);
+$bg-very-peri-04: rgba(102, 103, 171, 0.4);
+$bg-very-peri-03: rgba(102, 103, 171, 0.3);
+$bg-very-peri-02: rgba(102, 103, 171, 0.2);
+$bg-very-peri-01: rgba(102, 103, 171, 0.1);
+$bg-turquiose: #4cbfa6;
+$bg-turquiose-09: rgba(76, 191, 166, 0.9);
+$bg-turquiose-08: rgba(76, 191, 166, 0.8);
+$bg-turquiose-07: rgba(76, 191, 166, 0.7);
+$bg-turquiose-06: rgba(76, 191, 166, 0.6);
+$bg-turquiose-05: rgba(76, 191, 166, 0.5);
+$bg-turquiose-04: rgba(76, 191, 166, 0.4);
+$bg-turquiose-03: rgba(76, 191, 166, 0.3);
+$bg-turquiose-02: rgba(76, 191, 166, 0.2);
+$bg-turquiose-01: rgba(76, 191, 166, 0.1);
+$bg-spring-red: #BE1F35;
+$bg-spring-red-09: rgba(190, 31, 53, 0.9);
+$bg-spring-red-08: rgba(190, 31, 53, 0.8);
+$bg-spring-red-07: rgba(190, 31, 53, 0.7);
+$bg-spring-red-06: rgba(190, 31, 53, 0.6);
+$bg-spring-red-05: rgba(190, 31, 53, 0.5);
+$bg-spring-red-04: rgba(190, 31, 53, 0.4);
+$bg-spring-red-03: rgba(190, 31, 53, 0.3);
+$bg-spring-red-02: rgba(190, 31, 53, 0.2);
+$bg-spring-red-01: rgba(190, 31, 53, 0.1);
+
+//
+// Border colors //
+//
+$border-dark: $color-dark;
+$border-gray: rgb(226, 230, 234);
+
+//
+// Button colors //
+//
+$button-dark: rgb(24, 28, 32);
+$button-dark-lighter: rgb(32, 36, 40);
+$button-gray: rgb(228, 232, 236);
+$button-gray-lighter: rgb(238, 242, 246);
+$button-gray-darker: rgb(220, 224, 228);

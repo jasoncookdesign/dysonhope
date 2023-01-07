@@ -1,0 +1,1405 @@
+//
+// Button styles //
+//
+a {
+	color: $color-primary;
+	text-decoration: none;
+	@include transition(linear 0.1s);
+	&:hover {
+		color: $color-dark;
+		text-decoration: none;
+	}
+}
+button {
+	background: transparent;
+	box-shadow: none;
+	border: 0;
+	padding: 0;
+	cursor: pointer;
+}
+a, button {
+	&:focus, &:active {
+		box-shadow: none;
+		outline: 0;
+	}
+}
+
+.button {
+	font: 500 0.875em $font-family-tertiary;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.button {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	background: $button-gray;
+	border: 1px solid $button-gray;
+	padding: 5px 10px;
+	color: $color-dark;
+	@include transition(ease-out 0.12s);
+	i {
+		margin-right: 8px;
+		font-size: 15px;
+	}
+	&:hover {
+		color: $color-dark;
+	}
+}
+
+//
+// Button - Sizes //
+//
+.button-sm { padding: 12px 26px; }
+.button-md { padding: 14px 34px; }
+.button-lg { padding: 16px 42px; }
+.button-xl { padding: 18px 50px; }
+.button-fullwidth { width: 100%; text-align: center; }
+
+.button-gray, a.button-gray {
+	background: $button-gray;
+	border: 0;
+	&:hover, &:focus {
+		background: $button-gray-darker;
+		color: $color-dark;
+	}
+}
+.button-dark, a.button-dark {
+	background: $button-dark-lighter;
+	border: 0;
+	color: white;
+	&:hover, &:focus {
+		background: $button-dark;
+		color: white;
+	}
+}
+.button-white, a.button-white {
+	background: white;
+	border: 0;
+	color: $color-dark;
+	&:hover, &:focus {
+		background: $color-white-09;
+		border: 0;
+		color: $color-dark;
+	}
+}
+.button-white-2, a.button-white-2 {
+	background: $color-white-015;
+	border: 0;
+	color: white;
+	&:hover, &:focus {
+		background: $color-white-02;
+		color: white;
+	}
+}
+
+//
+// Social Buttons //
+//
+a[class*='button-social'], button[class*='button-social'] {
+	border: 0;
+	@include box-shadow(0 6px 30px 0 rgba(21,25,29,0.13));
+	&:hover, &:focus {
+		@include transform(translateY(-3px));
+		@include box-shadow(0 6px 36px 0 rgba(21,25,29,0.19));
+	}
+}
+.button-social-facebook {
+	background: $color-facebook;
+	color: white;
+	&:hover, &:focus {
+		color: white;
+	}
+}
+.button-social-twitter {
+	background: $color-twitter;
+	color: white;
+	&:hover, &:focus {
+		color: white;
+	}
+}
+.button-social-instagram {
+	background: $color-instagram;
+	color: white;
+	&:hover, &:focus {
+		color: white;
+	}
+}
+.button-social-linkedin {
+	background: $color-linkedin;
+	color: white;
+	&:hover, &:focus {
+		color: white;
+	}
+}
+.button-social-youtube {
+	background: $color-youtube;
+	color: white;
+	&:hover, &:focus {
+		color: white;
+	}
+}
+.button-social-pinterest {
+	background: $color-pinterest;
+	color: white;
+	&:hover, &:focus {
+		color: white;
+	}
+}
+.button-social-skype {
+	background: $color-skype;
+	color: white;
+	&:hover, &:focus {
+		color: white;
+	}
+}
+.button-social-dribbble {
+	background: $color-dribbble;
+	color: white;
+	&:hover, &:focus {
+		color: white;
+	}
+}
+.button-social-snapchat {
+	background: $color-snapchat;
+	color: $color-dark;
+	&:hover {
+		color: $color-dark;
+	}
+}
+.button-social-whatsapp {
+	background: $color-whatsapp;
+	color: white;
+	&:hover, &:focus {
+		color: white;
+	}
+}
+
+//
+// Gradient Styles //
+//
+.button-gradient-1 {
+	background-color: #21D4FD;
+	background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+}
+.button-gradient-2 {
+	background-color: #A9C9FF;
+	background-image: linear-gradient(45deg, #A9C9FF 0%, #FFBBEC 100%);
+}
+.button-gradient-3 {
+	background-color: #4158D0;
+	background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+.button-gradient-4 {
+	background-color: #00DBDE;
+	background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+}
+.button-gradient-5 {
+	background-color: #FBDA61;
+	background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);
+}
+.button-gradient-6 {
+	background-color: #0093E9;
+	background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+}
+a[class*='button-gradient'], button[class*='button-gradient'] {
+	border: 0;
+	@include box-shadow(0 6px 30px 0 rgba(21,25,29,0.13));
+	color: white;
+	&:hover, &:focus {
+		@include transform(translateY(-3px));
+		@include box-shadow(0 6px 36px 0 rgba(21,25,29,0.19));
+		color: white;
+	}
+}
+
+//
+// Colorful Styles //
+//
+.button-blue, 
+.button-purple, 
+.button-pink-edge, 
+.button-golden-yellow, 
+.button-very-peri, 
+.button-turquiose, 
+.button-spring-red {
+	border: 0;
+	@include box-shadow(0 6px 30px 0 rgba(21,25,29,0.13));
+	color: white;
+	&:hover, &:focus {
+		@include transform(translateY(-3px));
+		@include box-shadow(0 6px 36px 0 rgba(21,25,29,0.19));
+		color: white;
+	}
+}
+.button-blue {
+	background: $bg-blue;
+}
+.button-purple {
+	background: $bg-purple;
+}
+.button-pink-edge {
+	background: $bg-pink-edge;
+}
+.button-golden-yellow {
+	background: $bg-golden-yellow;
+}
+.button-very-peri {
+	background: $bg-very-peri;
+}
+.button-turquiose {
+	background: $bg-turquiose;
+}
+.button-spring-red {
+	background: $bg-spring-red;
+}
+
+//
+// Button - Outline //
+//
+.button-outline-gray, a.button-outline-gray {
+	background: transparent;
+	border-color: $color-dark-015;
+	&:hover, &:focus {
+		border-color: $button-dark;
+		color: $color-dark;
+	}
+}
+.button-outline-dark, a.button-outline-dark {
+	background: transparent;
+	border-color: $button-dark;
+	&:hover, &:focus {
+		background: $button-dark;
+		border-color: transparent;
+		color: white;
+	}
+}
+.button-outline-white, a.button-outline-white {
+	background: transparent;
+	border-color: $color-white-03;
+	color: white;
+	&:hover, &:focus {
+		border-color: white;
+		color: white;
+	}
+}
+.button-outline-white-2, a.button-outline-white-2 {
+	background: transparent;
+	border-color: white;
+	color: white;
+	&:hover, &:focus {
+		background: white;
+		color: $color-dark;
+	}
+}
+
+//
+// Button - Reveal Icon //
+//
+a, button {
+	&[class*='button-reveal'] {
+		span, i {
+			@include transition(all 0.24s cubic-bezier(0.165, 0.84, 0.44, 1));
+		}
+		span {
+			position: relative;
+		}
+		i {
+			position: absolute;
+			top: 50%;
+			@include transform(translateY(-50%));
+			opacity: 0;
+			margin: 0;
+		}
+		&:hover, &:focus {
+			i {
+				opacity: 1;
+			}
+		}
+	}
+}
+a, button {
+	&[class*='button-reveal-left'] {
+		span { left: 0; }
+		&:hover, &:focus {
+			span { left: 12px; }
+		}
+	}
+	&[class*='button-reveal-right'] {
+		span { right: 0; }
+		&:hover, &:focus {
+			span { right: 12px; }
+		}
+	}
+}
+.button-reveal-left-gray, a.button-reveal-left-gray, 
+.button-reveal-right-gray, a.button-reveal-right-gray {
+	background: $button-gray;
+	border: 0;
+	&:hover, &:focus {
+		background: $button-gray-darker;
+		color: $color-dark;
+	}
+}
+.button-reveal-left-dark, a.button-reveal-left-dark, 
+.button-reveal-right-dark, a.button-reveal-right-dark {
+	background: $button-dark-lighter;
+	border: 0;
+	color: white;
+	&:hover, &:focus {
+		background: $button-dark;
+		color: white;
+	}
+}
+.button-reveal-left-white, a.button-reveal-left-white, 
+.button-reveal-right-white, a.button-reveal-right-white {
+	background: white;
+	border: 0;
+	color: $color-dark;
+	&:hover, &:focus {
+		background: white;
+		color: $color-dark;
+	}
+}
+
+.button-sm {
+	&.button-reveal-left-gray, 
+	&.button-reveal-left-dark, 
+	&.button-reveal-left-white {
+		i { left: 20px; }
+		&:hover, &:focus {
+			i { left: 10px; }
+		}
+	}
+	&.button-reveal-right-gray, 
+	&.button-reveal-right-dark, 
+	&.button-reveal-right-white {
+		i { right: 20px; }
+		&:hover, &:focus {
+			i { right: 10px; }
+		}
+	}
+}
+.button-md {
+	&.button-reveal-left-gray, 
+	&.button-reveal-left-dark, 
+	&.button-reveal-left-white {
+		i { left: 30px; }
+		&:hover, &:focus {
+			i { left: 18px; }
+		}
+	}
+	&.button-reveal-right-gray, 
+	&.button-reveal-right-dark, 
+	&.button-reveal-right-white {
+		i { right: 30px; }
+		&:hover, &:focus {
+			i { right: 18px; }
+		}
+	}
+}
+.button-lg {
+	&.button-reveal-left-gray, 
+	&.button-reveal-left-dark, 
+	&.button-reveal-left-white {
+		i { left: 40px; }
+		&:hover, &:focus {
+			i { left: 28px; }
+		}
+	}
+	&.button-reveal-right-gray, 
+	&.button-reveal-right-dark, 
+	&.button-reveal-right-white {
+		i { right: 40px; }
+		&:hover, &:focus {
+			i { right: 28px; }
+		}
+	}
+}
+.button-xl {
+	&.button-reveal-left-gray, 
+	&.button-reveal-left-dark, 
+	&.button-reveal-left-white {
+		i { left: 50px; }
+		&:hover, &:focus {
+			i { left: 38px; }
+		}
+	}
+	&.button-reveal-right-gray, 
+	&.button-reveal-right-dark, 
+	&.button-reveal-right-white {
+		i { right: 50px; }
+		&:hover, &:focus {
+			i { right: 38px; }
+		}
+	}
+}
+
+//
+// Button - Reveal Icon Outline //
+//
+.button-reveal-left-outline-gray, a.button-reveal-left-outline-gray, 
+.button-reveal-right-outline-gray, a.button-reveal-right-outline-gray {
+	background: transparent;
+	border-color: $color-dark-015;
+	&:hover, &:focus {
+		border-color: $button-dark;
+		color: $color-dark;
+	}
+}
+.button-reveal-left-outline-dark, a.button-reveal-left-outline-dark, 
+.button-reveal-right-outline-dark, a.button-reveal-right-outline-dark {
+	background: transparent;
+	border-color: $button-dark;
+	&:hover, &:focus {
+		border-color: $color-dark-015;
+		color: $color-dark;
+	}
+}
+.button-reveal-left-outline-white, a.button-reveal-left-outline-white, 
+.button-reveal-right-outline-white, a.button-reveal-right-outline-white {
+	background: transparent;
+	border-color: $color-white-03;
+	color: white;
+	&:hover, &:focus {
+		border-color: white;
+		color: white;
+	}
+}
+
+.button-sm {
+	&.button-reveal-left-outline-gray, 
+	&.button-reveal-left-outline-dark, 
+	&.button-reveal-left-outline-white {
+		i { left: 20px; }
+		&:hover, &:focus {
+			i { left: 10px; }
+		}
+	}
+	&.button-reveal-right-outline-gray, 
+	&.button-reveal-right-outline-dark, 
+	&.button-reveal-right-outline-white {
+		i { right: 20px; }
+		&:hover, &:focus {
+			i { right: 10px; }
+		}
+	}
+}
+.button-md {
+	&.button-reveal-left-outline-gray, 
+	&.button-reveal-left-outline-dark, 
+	&.button-reveal-left-outline-white {
+		i { left: 30px; }
+		&:hover, &:focus {
+			i { left: 18px; }
+		}
+	}
+	&.button-reveal-right-outline-gray, 
+	&.button-reveal-right-outline-dark, 
+	&.button-reveal-right-outline-white {
+		i { right: 30px; }
+		&:hover, &:focus {
+			i { right: 18px; }
+		}
+	}
+}
+.button-lg {
+	&.button-reveal-left-outline-gray, 
+	&.button-reveal-left-outline-dark, 
+	&.button-reveal-left-outline-white {
+		i { left: 40px; }
+		&:hover, &:focus {
+			i { left: 28px; }
+		}
+	}
+	&.button-reveal-right-outline-gray, 
+	&.button-reveal-right-outline-dark, 
+	&.button-reveal-right-outline-white {
+		i { right: 40px; }
+		&:hover, &:focus {
+			i { right: 28px; }
+		}
+	}
+}
+.button-xl {
+	&.button-reveal-left-outline-gray, 
+	&.button-reveal-left-outline-dark, 
+	&.button-reveal-left-outline-white {
+		i { left: 50px; }
+		&:hover, &:focus {
+			i { left: 38px; }
+		}
+	}
+	&.button-reveal-right-outline-gray, 
+	&.button-reveal-right-outline-dark, 
+	&.button-reveal-right-outline-white {
+		i { right: 50px; }
+		&:hover, &:focus {
+			i { right: 38px; }
+		}
+	}
+}
+
+
+//
+// Fancy buttons //
+//
+a, button {
+	&[class*='button-fancy-1'] {
+		z-index: 1;
+		overflow: visible;
+		background: transparent;
+		border: 0;
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			@include transform(scaleY(1));
+			z-index: -1;
+			opacity: 1;
+			width: 100%;
+			height: 100%;
+			@include transition(all 0.24s cubic-bezier(0.165, 0.84, 0.44, 1));
+		}
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			@include transform(scaleY(0.2));
+			opacity: 0;
+			width: 100%;
+			height: 100%;
+			border: 1px solid $color-dark-09;
+			@include transition(all 0.24s cubic-bezier(0.165, 0.84, 0.44, 1));
+		}
+		&:hover {
+			&:before {
+				@include transform(scaleY(0.2));
+				opacity: 0;
+			}
+			&:after {
+				@include transform(scaleY(1));
+				opacity: 1;
+			}
+		}
+	}
+}
+.button-fancy-1, a.button-fancy-1 {
+	color: white;
+	&:before {
+		background: $button-dark;
+	}
+}
+.button-fancy-1-white, a.button-fancy-1-white {
+	color: $color-dark;
+	&:before {
+		background: white;
+	}
+	&:after {
+		border-color: white;
+	}
+	&:hover {
+		color: white;
+	}
+}
+.button-fancy-1-outline, a.button-fancy-1-outline {
+	&:before {
+		border: 1px solid $color-dark-015;
+	}
+	&:after {
+		z-index: -1;
+		background: $color-dark;
+		border: 0;
+	}
+	&:hover {
+		color: white;
+	}
+}
+.button-fancy-1-outline-dark, a.button-fancy-1-outline-dark {
+	&:before {
+		border: 1px solid $color-dark-09;
+	}
+	&:after {
+		z-index: -1;
+		background: $color-dark;
+	}
+	&:hover {
+		color: white;
+	}
+}
+.button-fancy-1-outline-white, a.button-fancy-1-outline-white {
+	color: white;
+	&:before {
+		border: 1px solid $color-white-09;
+	}
+	&:after {
+		z-index: -1;
+		background: white;
+	}
+	&:hover {
+		color: $color-dark;
+	}
+}
+
+a, button {
+	&[class*='button-fancy-2'] {
+		z-index: 1;
+		overflow: visible;
+		background: transparent;
+		border: 0;
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			@include transform(scaleX(1));
+			z-index: -1;
+			opacity: 1;
+			width: 100%;
+			height: 100%;
+			@include transition(all 0.24s cubic-bezier(0.165, 0.84, 0.44, 1));
+		}
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			@include transform(scaleX(0.6));
+			opacity: 0;
+			width: 100%;
+			height: 100%;
+			border: 1px solid $color-dark-09;
+			border-right: 0;
+			border-left: 0;
+			@include transition(all 0.24s cubic-bezier(0.165, 0.84, 0.44, 1));
+		}
+		&:hover {
+			&:before {
+				@include transform(scaleX(0.6));
+				opacity: 0;
+			}
+			&:after {
+				@include transform(scaleX(1));
+				opacity: 1;
+			}
+		}
+	}
+}
+.button-fancy-2, a.button-fancy-2 {
+	color: white;
+	&:before {
+		background: $button-dark;
+	}
+}
+.button-fancy-2-white, a.button-fancy-2-white {
+	color: $color-dark;
+	&:before {
+		background: white;
+	}
+	&:after {
+		border-color: white;
+	}
+	&:hover {
+		color: white;
+	}
+}
+.button-fancy-2-outline, a.button-fancy-2-outline {
+	&:before {
+		border: 1px solid $color-dark-015;
+	}
+}
+.button-fancy-2-outline-white, a.button-fancy-2-outline-white {
+	color: white;
+	&:before {
+		border: 1px solid $color-white-02;
+	}
+	&:after {
+		border-color: white;
+	}
+	&:hover {
+		color: white;
+	}
+}
+
+
+//
+// Text Buttons //
+//
+.button-text-1, 
+.button-text-2, 
+.button-text-3 {
+	position: relative;
+	display: inline-block;
+	color: black;
+	font-family: $font-family-tertiary;
+	letter-spacing: -0.2px;
+}
+.button-text-1 {
+	&:before {
+		content: '';
+		position: absolute;
+		bottom: -1px;
+		left: 0;
+		background: $color-dark-02;
+		width: 100%;
+		height: 1px;
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		right: 0;
+		bottom: -1px;
+		left: 0;
+		background: black;
+		height: 1px;
+		@include animation(button-line-out 0.24s cubic-bezier(0.165, 0.84, 0.44, 1) both);
+	}
+	&:hover {
+		&:after {
+			width: 100%;
+			@include animation(button-line-in 0.24s cubic-bezier(0.165, 0.84, 0.44, 1) both);
+		}
+	}
+}
+.button-text-2 {
+	&:before {
+		content: '';
+		position: absolute;
+		top: 40%;
+		right: 0;
+		left: 0;
+		background: $color-dark-02;
+		height: 40%;
+		@include animation(button-line-out 0.24s cubic-bezier(0.165, 0.84, 0.44, 1) both);
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		bottom: -1px;
+		right: 0;
+		left: 0;
+		background: black;
+		height: 1px;
+		@include animation(button-line-in 0.24s cubic-bezier(0.165, 0.84, 0.44, 1) both);
+	}
+	&:hover {
+		&:before { @include animation(button-line-in 0.24s cubic-bezier(0.165, 0.84, 0.44, 1) both); }
+		&:after { @include animation(button-line-out 0.24s cubic-bezier(0.165, 0.84, 0.44, 1) both); }
+	}
+}
+.button-text-3 {
+	padding-left: 30px;
+	@include transition(all 0.24s cubic-bezier(0.165, 0.84, 0.44, 1));
+	&:before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 0;
+		@include transform(translateY(-50%));
+		background: black;
+		width: 20px;
+		height: 1px;
+		@include transition(all 0.24s cubic-bezier(0.165, 0.84, 0.44, 1));
+	}
+	&:hover {
+		padding-left: 40px;
+		&:before {
+			width: 30px;
+		}
+	}
+}
+@-webkit-keyframes button-line-out {
+	0% {
+		@include transform(scaleX(1));
+		@include transform-origin(100% 50%);
+	}
+	100% {
+		@include transform(scaleX(0));
+		@include transform-origin(100% 50%);
+	}
+}
+@keyframes button-line-out {
+	0% {
+		@include transform(scaleX(1));
+		@include transform-origin(100% 50%);
+	}
+	100% {
+		@include transform(scaleX(0));
+		@include transform-origin(100% 50%);
+	}
+}
+@-webkit-keyframes button-line-in {
+	0% {
+		@include transform(scaleX(0));
+		@include transform-origin(0 50%);
+	}
+	100% {
+		@include transform(scale(1));
+		@include transform-origin(0 50%);
+	}
+}
+@keyframes button-line-in {
+	0% {
+		@include transform(scaleX(0));
+		@include transform-origin(0 50%);
+	}
+	100% {
+		@include transform(scale(1));
+		@include transform-origin(0 50%);
+	}
+}
+
+.bg-black, 
+div[class*='bg-dark'], 
+div[class*='bg-gradient'], 
+div[class*='bg-blue'], 
+div[class*='bg-purple'], 
+div[class*='bg-golden-yellow'], 
+div[class*='bg-pink-edge'], 
+div[class*='bg-very-peri'], 
+div[class*='bg-turquiose'], 
+div[class*='bg-spring-red'] {
+	.button-text-1, 
+	.button-text-2, 
+	.button-text-3 {
+		color: $color-white-08;
+		&:hover {
+			color: white;
+		}
+	}
+	.button-text-1 {
+		&:before { background: $color-white-03; }
+		&:after { background: white; }
+	}
+	.button-text-2 {
+		&:before { background: $color-white-04; }
+		&:after { background: white; }
+	}
+	.button-text-3 {
+		&:before { background: $color-white-08; }
+		&:hover {
+			&:before { background: white; }
+		}
+	}
+}
+
+
+//
+// Template Circle Button //
+//
+.button-circle, a.button-circle {
+	background: $button-gray;
+	display: inline-block;
+	border: 1px solid $button-gray;
+	border-radius: 50%;
+	color: $color-dark;
+	text-align: center;
+	@include transition(ease-out 0.12s);
+	&:hover {
+		color: $color-primary;
+	}
+	//
+	// Template Circle Button //
+	//
+	&.button-circle-gray {
+		background: $button-gray;
+		border: 0;
+		&:hover, &:focus {
+			background: $button-gray-darker;
+			color: $color-dark;
+		}
+	}
+	&.button-circle-dark {
+		background: $button-dark-lighter;
+		border: 0;
+		color: white;
+		&:hover, &:focus {
+			background: $button-dark;
+			color: white;
+		}
+	}
+	&.button-circle-white {
+		background: white;
+		border: 0;
+		color: $color-dark;
+		&:hover, &:focus {
+			background: $color-white-09;
+			color: $color-dark;
+		}
+	}
+	&.button-circle-white-2 {
+		background: $color-white-015;
+		border: 0;
+		color: white;
+		&:hover, &:focus {
+			background: $color-white-02;
+			color: white;
+		}
+	}
+
+
+	//
+	// Template Circle Button - Outline //
+	//
+	&.button-circle-outline-gray {
+		background: transparent;
+		border-color: $color-dark-015;
+		&:hover, &:focus {
+			border-color: $button-dark;
+			color: $color-dark;
+		}
+	}
+	&.button-circle-outline-dark {
+		background: transparent;
+		border-color: $button-dark;
+		&:hover, &:focus {
+			background: $button-dark;
+			border-color: transparent;
+			color: white;
+		}
+	}
+	&.button-circle-outline-white {
+		background: transparent;
+		border-color: $color-white-03;
+		color: white;
+		&:hover, &:focus {
+			border-color: white;
+			color: white;
+		}
+	}
+	&.button-circle-outline-white-2 {
+		background: transparent;
+		border-color: white;
+		color: white;
+		&:hover, &:focus {
+			background: white;
+			color: $color-dark;
+		}
+	}
+	//
+	// Circle Button - Gradient //
+	//
+	&.button-circle-gradient-1 {
+		background-color: #21D4FD;
+		background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+		&:hover, &:focus {
+			background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+		}
+	}
+	&.button-circle-gradient-2 {
+		background-color: #A9C9FF;
+		background-image: linear-gradient(45deg, #A9C9FF 0%, #FFBBEC 100%);
+		&:hover, &:focus {
+			background-image: linear-gradient(45deg, #A9C9FF 0%, #FFBBEC 100%);
+		}
+	}
+	&.button-circle-gradient-3 {
+		background-color: #4158D0;
+		background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+		&:hover, &:focus {
+			background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+		}
+	}
+	&.button-circle-gradient-4 {
+		background-color: #00DBDE;
+		background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+		&:hover, &:focus {
+			background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+		}
+	}
+	&.button-circle-gradient-5 {
+		background-color: #FBDA61;
+		background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);
+		&:hover, &:focus {
+			background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);
+		}
+	}
+	&.button-circle-gradient-6 {
+		background-color: #0093E9;
+		background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+		&:hover, &:focus {
+			background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+		}
+	}
+	&.button-circle-blue, 
+	&.button-circle-purple, 
+	&.button-circle-pink-edge, 
+	&.button-circle-golden-yellow, 
+	&.button-circle-very-peri, 
+	&.button-circle-turquiose, 
+	&.button-circle-spring-red {
+		border: 0;
+		@include box-shadow(0 6px 30px 0 rgba(21,25,29,0.13));
+		color: white;
+		&:hover, &:focus {
+			@include transform(translateY(-3px));
+			@include box-shadow(0 6px 36px 0 rgba(21,25,29,0.19));
+			color: white;
+		}
+	}
+	&.button-circle-blue {
+		background: $bg-blue;
+	}
+	&.button-circle-purple {
+		background: $bg-purple;
+	}
+	&.button-circle-pink-edge {
+		background: $bg-pink-edge;
+	}
+	&.button-circle-golden-yellow {
+		background: $bg-golden-yellow;
+	}
+	&.button-circle-very-peri {
+		background: $bg-very-peri;
+	}
+	&.button-circle-turquiose {
+		background: $bg-turquiose;
+	}
+	&.button-circle-spring-red {
+		background: $bg-spring-red;
+	}
+	//
+	// Button Circle - Social //
+	//
+	&.button-circle-social-facebook {
+		background: $color-facebook;
+		color: white;
+		&:hover {
+			color: white;
+		}
+	}
+	&.button-circle-social-twitter {
+		background: $color-twitter;
+		color: white;
+		&:hover {
+			color: white;
+		}
+	}
+	&.button-circle-social-instagram {
+		background: $color-instagram;
+		color: white;
+		&:hover {
+			color: white;
+		}
+	}
+	&.button-circle-social-linkedin {
+		background: $color-linkedin;
+		color: white;
+		&:hover {
+			color: white;
+		}
+	}
+	&.button-circle-social-youtube {
+		background: $color-youtube;
+		color: white;
+		&:hover {
+			color: white;
+		}
+	}
+	&.button-circle-social-pinterest {
+		background: $color-pinterest;
+		color: white;
+		&:hover {
+			color: white;
+		}
+	}
+	&.button-circle-social-skype {
+		background: $color-skype;
+		color: white;
+		&:hover {
+			color: white;
+		}
+	}
+	&.button-circle-social-dribbble {
+		background: $color-dribbble;
+		color: white;
+		&:hover {
+			color: white;
+		}
+	}
+	&.button-circle-social-snapchat {
+		background: $color-snapchat;
+		color: $color-dark;
+		&:hover {
+			color: $color-dark;
+		}
+	}
+	&.button-circle-social-whatsapp {
+		background: $color-whatsapp;
+		color: white;
+		&:hover {
+			color: white;
+		}
+	}
+}
+a[class*='button-circle-gradient'], button[class*='button-circle-gradient'] {
+	border: 0;
+	@include box-shadow(0 6px 30px 0 rgba(21,25,29,0.13));
+	color: white;
+	&:hover, &:focus {
+		@include transform(translateY(-3px));
+		@include box-shadow(0 6px 36px 0 rgba(21,25,29,0.19));
+		color: white;
+	}
+}
+a[class*='button-circle-social'], button[class*='button-circle-social'] {
+	border: 0;
+	@include box-shadow(0 6px 30px 0 rgba(21,25,29,0.13));
+	&:hover, &:focus {
+		@include transform(translateY(-3px));
+		@include box-shadow(0 6px 36px 0 rgba(21,25,29,0.19));
+	}
+}
+
+
+//
+// Template Circle Button - Sizes //
+//
+.button-circle-sm {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	i { line-height: 40px; }
+}
+.button-circle-md {
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	i { line-height: 50px; }
+}
+.button-circle-lg {
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	i { line-height: 60px; }
+}
+.button-circle-xl {
+	width: 70px;
+	height: 70px;
+	line-height: 70px;
+	i { line-height: 70px; }
+}
+
+
+//
+// Template Circle Button - Hover Slide //
+//
+.button-circle-hover-slide {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	i {
+		position: absolute;
+		left: 50%;
+		&:first-child {
+			top: 50%;
+			@include transform(translateX(-50%) translateY(-50%));
+		}
+		&:last-child {
+			top: 100%;
+			@include transform(translateX(-50%));
+		}
+	}
+	&:hover {
+		i {
+			&:first-child {
+				@include animation(button-slide-out 0.24s ease-out both);
+			}
+			&:last-child {
+				@include animation(button-slide-in 0.24s ease-out both);
+			}
+		}
+	}
+}
+@-webkit-keyframes button-slide-out {
+	0% {
+		top: 50%;
+		@include transform(translateX(-50%) translateY(-50%));
+		opacity: 1;
+	}
+	100% {
+		top: -100%;
+		@include transform(translateX(-50%) translateY(0));
+		opacity: 0;
+	}
+}
+@keyframes button-slide-out {
+	0% {
+		top: 50%;
+		@include transform(translateX(-50%) translateY(-50%));
+		opacity: 1;
+	}
+	100% {
+		top: -100%;
+		@include transform(translateX(-50%) translateY(0));
+		opacity: 0;
+	}
+}
+@-webkit-keyframes button-slide-in {
+	0% {
+		top: 100%;
+		@include transform(translateX(-50%));
+		opacity: 0;
+	}
+	100% {
+		top: 50%;
+		@include transform(translateX(-50%) translateY(-50%));
+		opacity: 1;
+	}
+}
+@keyframes button-slide-in {
+	0% {
+		top: 100%;
+		@include transform(translateX(-50%));
+		opacity: 0;
+	}
+	100% {
+		top: 50%;
+		@include transform(translateX(-50%) translateY(-50%));
+		opacity: 1;
+	}
+}
+
+
+//
+// Button Animations //
+//
+.button-circle-animation-drop {
+	position: relative;
+	&:before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		@include transform(translate(-50%, -50%));
+		opacity: 1;
+		width: 100%;
+		height: 100%;
+		border: 2px solid $color-dark-01;
+		border-radius: 50%;
+		@include animation(button-drop 2s ease-out infinite);
+	}
+	&.button-circle-dark {
+		&:before {
+			border-color: $color-dark-015;
+		}
+	}
+	&.button-circle-white, &.button-circle-white-2, &.button-circle-white-3 {
+		&:before {
+			border-color: $color-white-04;
+		}
+	}
+	&.button-circle-outline-white, &.button-circle-outline-white-2 {
+		&:before {
+			border-color: $color-white-03;
+		}
+	}
+}
+@-webkit-keyframes button-drop {
+	0% {
+		opacity: 1;
+		width: 100%;
+		height: 100%;
+	}
+	60% {
+		opacity: 0;
+		width: 160%;
+		height: 160%;
+	}
+	100% {
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+@keyframes button-drop {
+	0% {
+		opacity: 1;
+		width: 100%;
+		height: 100%;
+	}
+	60% {
+		opacity: 0;
+		width: 160%;
+		height: 160%;
+	}
+	100% {
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+//
+// Buttons Font Styles //
+//
+.button-font-2 {
+	font-size: 0.938em;
+	letter-spacing: -0.2px;
+	text-transform: none;
+}
+
+//
+// Button - Radius //
+//
+.button-radius {
+	border-radius: 0.5em;
+}
+.button-rounded {
+	border-radius: 50px;
+}
+
+//
+// Button - Border //
+//
+.button-border-2, 
+.button-border-2.button-circle {
+	border-width: 2px;
+}
+
+//
+// Button Hover - Float //
+//
+.button-hover-float, a.button-hover-float {
+	&:hover, &:focus {
+		@include transform(translateY(-3px));
+	}
+}
+//
+// Button Hover - Scale //
+//
+.button-hover-scale, a.button-hover-scale {
+	&:hover, &:focus {
+		@include transform(scale(1.03));
+	}
+	&.button-circle {
+		&:hover, &:focus {
+			@include transform(scale(1.04));
+		}
+	}
+}
+//
+// Button Hover - Shrink //
+//
+.button-hover-shrink, a.button-hover-shrink {
+	&:hover, &:focus {
+		@include transform(scale(0.97));
+	}
+	&.button-circle {
+		&:hover, &:focus {
+			@include transform(scale(0.96));
+		}
+	}
+}
+//
+// Button - Shadow //
+//
+.button-shadow, a.button-shadow {
+	@include box-shadow(0 6px 30px 0 rgba(22,24,26,0.13));
+	&:hover, &:focus {
+		@include box-shadow(0 6px 36px 0 rgba(22,24,26,0.19));
+	}
+}

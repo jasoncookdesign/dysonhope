@@ -1,0 +1,46 @@
+//
+// Image Styles //
+//
+img {
+	width: auto;
+	max-width: 100%;
+	height: auto;
+	&[class*='img-mask-avatar'] {
+		border-radius: 50%;
+	}
+	&.img-mask-avatar-xs {
+		min-width: 60px;
+		width: 60px;
+		height: 60px;
+	}
+	&.img-mask-avatar-sm {
+		min-width: 80px;
+		width: 80px;
+		height: 80px;
+	}
+	&.img-mask-avatar-md {
+		min-width: 100px;
+		width: 100px;
+		height: 100px;
+	}
+	&.img-mask-avatar-lg {
+		min-width: 120px;
+		width: 120px;
+		height: 120px;
+	}
+	&.img-mask-avatar-xl {
+		min-width: 140px;
+		width: 140px;
+		height: 140px;
+	}
+	&.img-mask-avatar-2xl {
+		min-width: 160px;
+		width: 160px;
+		height: 160px;
+	}
+	&.img-mask-avatar-3xl {
+		min-width: 180px;
+		width: 180px;
+		height: 180px;
+	}
+}

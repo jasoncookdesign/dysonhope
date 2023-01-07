@@ -1,0 +1,101 @@
+//
+// Animated Progress bar Styles //
+//
+.progress-box {
+	* {
+		margin: 0;
+	}
+	.animated-progress {
+		position: relative;
+		background: $color-dark-01;
+		height: 5px;
+		margin-top: 2px;
+		border-radius: 3px;
+		div {
+			position: absolute;
+			display: block;
+			background: $color-dark;
+			width: 50%;
+			height: 100%;
+			border-radius: 3px;
+			color: $color-dark;
+			@include transition(width 0.7s cubic-bezier(0.165, 0.84, 0.44, 1));
+			@include transition-delay(0.1s);
+			&::after {
+				content: attr(data-progress) '%';
+				position: absolute;
+				top: -24px;
+				right: 0;
+			}
+		}
+	}
+	&.progress-blue {
+		.animated-progress {
+			div {
+				background: $bg-blue;
+			}
+		}
+	}
+	&.progress-purple {
+		.animated-progress {
+			div {
+				background: $bg-purple;
+			}
+		}
+	}
+	&.progress-pink-edge {
+		.animated-progress {
+			div {
+				background: $bg-pink-edge;
+			}
+		}
+	}
+	&.progress-golden-yellow {
+		.animated-progress {
+			div {
+				background: $bg-golden-yellow;
+			}
+		}
+	}
+	&.progress-very-peri {
+		.animated-progress {
+			div {
+				background: $bg-very-peri;
+			}
+		}
+	}
+	&.progress-turquiose {
+		.animated-progress {
+			div {
+				background: $bg-turquiose;
+			}
+		}
+	}
+	&.progress-spring-red {
+		.animated-progress {
+			div {
+				background: $bg-spring-red;
+			}
+		}
+	}
+}
+.bg-black, 
+div[class*='bg-dark'], 
+div[class*='bg-gradient'], 
+div[class*='bg-blue'], 
+div[class*='bg-purple'], 
+div[class*='bg-golden-yellow'], 
+div[class*='bg-pink-edge'], 
+div[class*='bg-very-peri'], 
+div[class*='bg-turquiose'], 
+div[class*='bg-spring-red'] {
+	.progress-box {
+		.animated-progress {
+			background: $color-white-03;
+			div {
+				background: white;
+				color: white;
+			}
+		}
+	}
+}
