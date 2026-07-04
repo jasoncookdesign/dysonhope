@@ -3,6 +3,7 @@ title: "Choose Your Workflow, Then Your Gear"
 date: 2026-06-29
 slug: choose-your-workflow-then-your-gear
 tags: [production]
+excerpt: "Most people buy the gear first and figure out what to do with it second. It's backward. Decide what you want your hands to do, design the controls you need, then go find the hardware that matches."
 draft: false
 ---
 

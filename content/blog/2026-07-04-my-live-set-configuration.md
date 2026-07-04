@@ -3,6 +3,7 @@ title: "My Live Set Configuration"
 date: 2026-07-04
 slug: my-live-set-configuration
 tags: [dj, performance]
+excerpt: "The full breakdown of my Ableton Live rig — two decks, eight channels, eight-bar loops. Every routing choice serves one goal: nothing goes wrong on a dancefloor that I can't recover from in a couple of seconds."
 draft: false
 ---
 
