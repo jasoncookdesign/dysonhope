@@ -27,17 +27,21 @@
 	</script>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Writing from Dyson Hope — notes on electronic music, the underground, and the craft behind the records.">
-	<link rel="canonical" href="https://dysonhope.com/blog/">
+	<meta name="description" content="Watch most hypnotic techno house DJs for ten minutes, and you&#x27;ll notice something: the crossfader barely moves from the center. Two records are playing at once, almost the whole time, and the set is…">
+	<link rel="canonical" href="https://dysonhope.com/blog/different-genres-different-styles-of-mixing/">
 	<!-- Open Graph -->
 	<meta property="og:site_name" content="Dyson Hope">
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://dysonhope.com/blog/">
-	<meta property="og:title" content="Writing — Dyson Hope">
-	<meta property="og:description" content="Notes on electronic music, the underground, and the craft behind the records.">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="https://dysonhope.com/blog/different-genres-different-styles-of-mixing/">
+	<meta property="og:title" content="Different Genres, Different Styles of Mixing">
+	<meta property="og:description" content="Watch most hypnotic techno house DJs for ten minutes, and you&#x27;ll notice something: the crossfader barely moves from the center. Two records are playing at once, almost the whole time, and the set is…">
 	<meta property="og:image" content="https://dysonhope.com/assets/images/dh-social-card-1200x630.jpg">
+	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary_large_image">
-	<title>Writing — Dyson Hope</title>
+	<meta name="twitter:title" content="Different Genres, Different Styles of Mixing">
+	<meta name="twitter:description" content="Watch most hypnotic techno house DJs for ten minutes, and you&#x27;ll notice something: the crossfader barely moves from the center. Two records are playing at once, almost the whole time, and the set is…">
+	<meta name="twitter:image" content="https://dysonhope.com/assets/images/dh-social-card-1200x630.jpg">
+	<title>Different Genres, Different Styles of Mixing — Dyson Hope</title>
 	<!-- Favicon -->
 	<link href="/assets/images/favicon.png" rel="shortcut icon">
 	<!-- Fonts -->
@@ -50,22 +54,31 @@
 	<link rel="stylesheet" href="/assets/css/dysonhope.css">
 	<!-- RSS -->
 	<link rel="alternate" type="application/rss+xml" title="Dyson Hope — Writing" href="/blog/feed.xml">
-	<!-- Blog listing typography (scoped; layers on dysonhope.css tokens) -->
+	<!-- Blog post typography (scoped; layers on dysonhope.css tokens) -->
 	<style>
-	.blog-wrap{max-width:820px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(22px,3.6vw,46px)}
+	.blog-wrap{max-width:760px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(22px,3.6vw,46px)}
 	.blog-eyebrow{font-family:var(--mono);font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:16px}
-	.blog-wrap h1{font-size:clamp(2.2rem,7vw,3.8rem);text-transform:uppercase;letter-spacing:-.03em;line-height:.95;margin-bottom:18px}
-	.blog-lede{color:var(--text-2);font-size:1.06rem;line-height:1.6;max-width:60ch;margin:0 0 clamp(40px,5vw,64px);padding-bottom:clamp(40px,5vw,64px);border-bottom:1.5px solid var(--line)}
-	.post-list{list-style:none;padding:0;margin:0}
-	.post-list-item{padding:clamp(28px,3.5vw,40px) 0;border-bottom:1.5px solid var(--line)}
-	.post-list-meta{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);margin:0 0 12px}
-	.post-list-item h2{font-family:var(--display);font-size:clamp(1.4rem,3.4vw,2rem);text-transform:uppercase;letter-spacing:-.02em;line-height:1.02;margin:0 0 12px}
-	.post-list-item h2 a{color:var(--text);border-bottom:1.5px solid transparent;transition:color .3s var(--ease),border-color .3s var(--ease)}
-	.post-list-item h2 a:hover{color:var(--accent);border-bottom-color:var(--accent)}
-	.post-list-excerpt{color:var(--text-2);font-size:1.02rem;line-height:1.6;margin:0;max-width:64ch}
-	.post-list-tags{margin-top:14px}
+	.blog-wrap h1{font-size:clamp(2rem,6vw,3.4rem);text-transform:uppercase;letter-spacing:-.03em;line-height:.98;margin-bottom:20px}
+	.blog-meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin:0 0 28px}
+	.blog-tags{margin-bottom:clamp(36px,5vw,56px);padding-bottom:clamp(36px,5vw,56px);border-bottom:1.5px solid var(--line)}
 	.blog-tag{display:inline-block;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-2);border:1.5px solid var(--line-2);padding:5px 12px;margin:0 8px 8px 0}
-	.post-list-empty{color:var(--text-3);font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:40px 0}
+	.blog-body{color:var(--text-2);font-size:1.06rem;line-height:1.78}
+	.blog-body h2{font-family:var(--display);color:var(--text);font-size:clamp(1.3rem,3vw,1.7rem);text-transform:uppercase;letter-spacing:-.01em;line-height:1.08;margin:clamp(40px,5vw,60px) 0 16px}
+	.blog-body h3{font-family:var(--display);color:var(--text);font-size:1.2rem;text-transform:uppercase;letter-spacing:-.01em;margin:36px 0 12px}
+	.blog-body p{margin:0 0 1.4rem;max-width:68ch}
+	.blog-body ul,.blog-body ol{margin:0 0 1.4rem 1.2rem;max-width:68ch}
+	.blog-body li{margin:.4rem 0}
+	.blog-body a{color:var(--accent);border-bottom:1px solid transparent;transition:border-color .3s var(--ease)}
+	.blog-body a:hover{border-bottom-color:var(--accent)}
+	.blog-body strong{color:var(--text)}
+	.blog-body blockquote{border-left:2px solid var(--accent);margin:1.8rem 0;padding:.4rem 0 .4rem 1.4rem;color:var(--text);font-family:var(--display);font-weight:500;font-size:1.2rem;line-height:1.3;text-transform:uppercase;letter-spacing:-.01em}
+	.blog-body code{font-family:var(--mono);background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:.1em .4em;font-size:.86em;color:var(--text)}
+	.blog-body pre{background:var(--ground-2);border:1.5px solid var(--line);border-radius:6px;padding:1.1rem 1.3rem;overflow-x:auto;margin:0 0 1.6rem}
+	.blog-body pre code{background:transparent;border:0;padding:0;font-size:.86rem;color:var(--text-2)}
+	.blog-body img{max-width:100%;height:auto;border:1.5px solid var(--line);margin:1.6rem 0}
+	.blog-body hr{border:0;border-top:1.5px solid var(--line);margin:2.4rem 0}
+	.blog-backlink{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);margin-top:clamp(40px,5vw,56px);padding-top:clamp(36px,5vw,48px);border-top:1.5px solid var(--line);border-bottom:1px solid transparent}
+	.blog-backlink:hover{color:var(--accent)}
 	</style>
 </head>
 <body>
@@ -97,7 +110,7 @@
         <a href="/">Home</a>
         <a href="/#listen">Listen</a>
         <a href="/#works">Works</a>
-        <a href="/links/" data-track="true" data-entity="cta" data-action="click" data-target="links" data-page-type="blog-index">Links &rarr;</a>
+        <a href="/links/" data-track="true" data-entity="cta" data-action="click" data-target="links" data-page-type="blog-post">Links &rarr;</a>
         <a href="/#contact" class="cta">Contact</a>
       </nav>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
@@ -108,84 +121,28 @@
 <!-- MAIN -->
 <main id="main">
   <div class="container">
-    <div class="blog-wrap">
+    <article class="blog-wrap">
       <span class="blog-eyebrow">[ Writing ]</span>
-      <h1>Writing</h1>
-      <p class="blog-lede">Notes from the studio and the floor — electronic music, the underground, and the craft behind the records.</p>
-      <ul class="post-list">
+      <h1>Different Genres, Different Styles of Mixing</h1>
+      <p class="blog-meta"><time datetime="2026-07-16">July 16, 2026</time></p>
+      <div class="blog-tags"><span class="blog-tag">dj</span><span class="blog-tag">performance</span></div>
+      <div class="blog-body">
+        <figure style="margin:0 0 1.8rem;"><img src="/assets/images/blog/different-genres-different-styles-of-mixing/hero.png" alt="DJ mixer mid-set, hands on crossfader, two turntables/records playing"><figcaption style="font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-top:8px;">Photo: Vasil Korzh / Unsplash</figcaption></figure>
 
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2026-07-16">July 16, 2026</time></p>
-          <h2><a href="different-genres-different-styles-of-mixing/">Different Genres, Different Styles of Mixing</a></h2>
-          <p class="post-list-excerpt">Watch most hypnotic techno house DJs for ten minutes, and you&#x27;ll notice something: the crossfader barely moves from the center. Two records are playing at once, almost the whole time, and the set is…</p>
-          <div class="post-list-tags"><span class="blog-tag">dj</span><span class="blog-tag">performance</span></div>
-        </li>
-
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2026-07-12">July 12, 2026</time></p>
-          <h2><a href="getting-a-deep-multilayered-sound/">Getting a Deep, Multilayered Sound</a></h2>
-          <p class="post-list-excerpt">A track that feels thin almost never has too few instruments. It has too few voices. That&#x27;s a different problem, and once you see the difference, the fix stops being &quot;add more stuff&quot; and becomes…</p>
-          <div class="post-list-tags"><span class="blog-tag">production</span></div>
-        </li>
-
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2026-07-08">July 8, 2026</time></p>
-          <h2><a href="how-i-discover-music/">How I Discover Music</a></h2>
-          <p class="post-list-excerpt">When people ask me how I find new music, what they usually expect is a genre map — a clean tree that tells them where everything fits. I gave up on that idea many years ago.</p>
-          <div class="post-list-tags"><span class="blog-tag">philosophy</span></div>
-        </li>
-
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2026-07-04">July 4, 2026</time></p>
-          <h2><a href="my-live-set-configuration/">My Live Set Configuration</a></h2>
-          <p class="post-list-excerpt">The full breakdown of my Ableton Live rig — two decks, eight channels, eight-bar loops. Every routing choice serves one goal: nothing goes wrong on a dancefloor that I can&#x27;t recover from in a couple of seconds.</p>
-          <div class="post-list-tags"><span class="blog-tag">dj</span><span class="blog-tag">performance</span></div>
-        </li>
-
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2026-06-29">June 29, 2026</time></p>
-          <h2><a href="choose-your-workflow-then-your-gear/">Choose Your Workflow, Then Your Gear</a></h2>
-          <p class="post-list-excerpt">Most people buy the gear first and figure out what to do with it second. It&#x27;s backward. Decide what you want your hands to do, design the controls you need, then go find the hardware that matches.</p>
-          <div class="post-list-tags"><span class="blog-tag">production</span></div>
-        </li>
-
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2026-06-27">June 27, 2026</time></p>
-          <h2><a href="the-tool-was-never-the-problem/">The Tool Was Never the Problem</a></h2>
-          <p class="post-list-excerpt">Sampling, the drum machine, the DAW — every one of them was going to kill real music. AI is the newest moral panic in a long line. But there is a real line this time, and it isn&#x27;t the tool. It&#x27;s authorship.</p>
-          <div class="post-list-tags"><span class="blog-tag">ai</span><span class="blog-tag">authenticity</span><span class="blog-tag">underground</span></div>
-        </li>
-
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2026-06-26">June 26, 2026</time></p>
-          <h2><a href="printing-your-midi/">To Producers Afraid of Printing Their MIDI</a></h2>
-          <p class="post-list-excerpt">Why committing your sound — printing MIDI to audio — is what lets it finally become something, and where the real work starts.</p>
-          <div class="post-list-tags"><span class="blog-tag">studio notes</span><span class="blog-tag">production</span></div>
-        </li>
-
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2026-06-23">June 23, 2026</time></p>
-          <h2><a href="the-long-version/">The Long Version</a></h2>
-          <p class="post-list-excerpt">A record is the short version. This is where the long version lives — the rooms, the gear, and the reasons behind the tracks.</p>
-          <div class="post-list-tags"><span class="blog-tag">studio notes</span><span class="blog-tag">underground</span></div>
-        </li>
-
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2023-08-10">August 10, 2023</time></p>
-          <h2><a href="how-law-shaped-underground-dance-culture/">Rave Revolution: How UK + US Laws Shaped Underground Dance Culture</a></h2>
-          <p class="post-list-excerpt">Early raves attracted people with renegade spirits because they were illegal. How four decades of UK and US law pushed dance culture underground, overground, and back again.</p>
-          <div class="post-list-tags"><span class="blog-tag">underground</span><span class="blog-tag">rave history</span><span class="blog-tag">electronic music</span><span class="blog-tag">law</span></div>
-        </li>
-
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2023-07-30">July 30, 2023</time></p>
-          <h2><a href="how-sampling-transformed-music/">How Sampling Transformed Music (A Short History of Sampling)</a></h2>
-          <p class="post-list-excerpt">The single most important invention in the history of music is the phonograph. The second is the sampler — and a short history of how it rewrote music, culture, and law.</p>
-          <div class="post-list-tags"><span class="blog-tag">music history</span><span class="blog-tag">sampling</span><span class="blog-tag">copyright</span></div>
-        </li>
-
-      </ul>
-    </div>
+<p>Watch most hypnotic techno house DJs for ten minutes, and you'll notice something: the crossfader barely moves from the center. Two records are playing at once, almost the whole time, and the set is what happens in the overlap between them. Now watch a hip hop DJ. The crossfader is never still. It cuts, it juggles, it scratches, and two records are almost never just riding together for long. Same instrument, same room, completely different job.</p>
+<p>When most DJs start out, nobody clues them in on a fact that mature DJs figure out later: there isn't one skill called "mixing." There are two. You're either <em>mixing</em> records — layering them, building something out of the overlap that neither one was on its own — or you're <em>transitioning</em> — getting cleanly from one record to the next with as little overlap as you can manage. Every genre sits somewhere on that line, and where it sits is mostly decided before you ever touch it. It's baked into how the records are written.</p>
+<h2>The records tell you what they want</h2>
+<p>Older house, techno, drum &amp; bass, breakbeat, and trance — the "traditional" dance genres — were usually built to be layered. The records have long intros and outros for exactly that reason. They ran past four minutes because they weren't intended to stand alone; they were meant to spend time on top of each other. That generous front and back end was an invitation. The producer handed you room to work. A hypnotic techno DJ took that invitation literally, spending most of the night with two or three records breathing together, the fader in the middle, the set living in the blend.</p>
+<p>Fast-forward down the timeline, and the records started asking for less. Dubstep goes either way depending on the subgenre — some tracks have effectively no intro at all and want a hard transition, others are built for a long progression with a bassline that transforms at the peak of the mix. Trap behaves a lot like hip hop: quick mixes, turntablism if that's your thing, and a careful eye on vocals so two don't collide. The records tend to stand on their own rather than ask to be blended. Spare instrumental trap or riddim with an acapella floating over are obvious exceptions, but the rule holds — these aren't the sort of records that want to sit inside each other.</p>
+<p>Hip hop earns its own note because turntablism complicates the picture. On paper, it's a transition genre, not a mixing one. But a turntablist with a deep bag of scratch and juggle tricks can build transitions every bit as intricate as a long house blend — just with far less time spent with both records playing and the fader parked in the middle. The complexity moves from the overlap to the hands.</p>
+<p>And then, on the far end, there's top 40, which is really meant to be essentially unmixed. Get from one record to the next without trainwrecking, and the floor is happy. The records are familiar by definition — that's what makes them top 40 — so the move is the radio DJ aesthetic: A to B, minimal flair. Which doesn't mean it's easy or that there's nothing to it. It means the craft moves somewhere else entirely. With records this recognizable, the artistry isn't in the blend. It's in the programming — what you play, in what order, and why. You make those sets exciting by being a great selector, not a great mixer.</p>
+<h2>So where does the interesting stuff live?</h2>
+<p>Once you know which kind of set you're playing, the question becomes how to keep it from going on autopilot — and the deepest rut in all of dance music is the outro-to-intro. Bring in track B at the start of track A's outro, let them cross, move on. Do that forty times in a night, and you've built a competent set that nobody remembers.</p>
+<p>The fix is to stop treating the long intros and outros as the only place a mix can happen. Bring track B in at track A's <em>drop</em> instead of its outro, so B reaches its own drop right as A breaks down — now the two records are arguing with each other instead of politely shaking hands. Let two tracks ride and slam the fader back and forth between them; with amen-driven drum and bass that move alone can carry a stretch of a set. Build a track up and slam-mix straight into the drop of something completely different. Learn enough about harmonic mixing to stack three records at once and have them agree. Go listen to how a pro bass music DJ programs forty tracks into a single hour without it sounding rushed, or how the good D&amp;B selectors run double drops, and you'll hear what's possible when someone isn't satisfied with letting records mix themselves.</p>
+<p>None of that is about the genre. It's about refusing the default. The genre decides whether your hands live on the crossfader or in the programming; what you do once you know which one it is — that's the part that's actually you.</p>
+      </div>
+      <a class="blog-backlink" href="/blog/">&larr; All writing</a>
+    </article>
   </div>
 </main>
 
