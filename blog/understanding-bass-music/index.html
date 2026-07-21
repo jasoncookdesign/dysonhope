@@ -27,17 +27,21 @@
 	</script>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Writing from Dyson Hope — notes on electronic music, the underground, and the craft behind the records.">
-	<link rel="canonical" href="https://dysonhope.com/blog/">
+	<meta name="description" content="If you&#x27;ve ever tried to understand bass music and walked away feeling stupid, the problem probably isn&#x27;t you. The problem is that you tried to understand the whole thing at once, and the whole thing…">
+	<link rel="canonical" href="https://dysonhope.com/blog/understanding-bass-music/">
 	<!-- Open Graph -->
 	<meta property="og:site_name" content="Dyson Hope">
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://dysonhope.com/blog/">
-	<meta property="og:title" content="Writing — Dyson Hope">
-	<meta property="og:description" content="Notes on electronic music, the underground, and the craft behind the records.">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="https://dysonhope.com/blog/understanding-bass-music/">
+	<meta property="og:title" content="For People Who Have a Hard Time Understanding Bass Music">
+	<meta property="og:description" content="If you&#x27;ve ever tried to understand bass music and walked away feeling stupid, the problem probably isn&#x27;t you. The problem is that you tried to understand the whole thing at once, and the whole thing…">
 	<meta property="og:image" content="https://dysonhope.com/assets/images/dh-social-card-1200x630.jpg">
+	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary_large_image">
-	<title>Writing — Dyson Hope</title>
+	<meta name="twitter:title" content="For People Who Have a Hard Time Understanding Bass Music">
+	<meta name="twitter:description" content="If you&#x27;ve ever tried to understand bass music and walked away feeling stupid, the problem probably isn&#x27;t you. The problem is that you tried to understand the whole thing at once, and the whole thing…">
+	<meta name="twitter:image" content="https://dysonhope.com/assets/images/dh-social-card-1200x630.jpg">
+	<title>For People Who Have a Hard Time Understanding Bass Music — Dyson Hope</title>
 	<!-- Favicon -->
 	<link href="/assets/images/favicon.png" rel="shortcut icon">
 	<!-- Fonts -->
@@ -50,22 +54,31 @@
 	<link rel="stylesheet" href="/assets/css/dysonhope.css">
 	<!-- RSS -->
 	<link rel="alternate" type="application/rss+xml" title="Dyson Hope — Writing" href="/blog/feed.xml">
-	<!-- Blog listing typography (scoped; layers on dysonhope.css tokens) -->
+	<!-- Blog post typography (scoped; layers on dysonhope.css tokens) -->
 	<style>
-	.blog-wrap{max-width:820px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(22px,3.6vw,46px)}
+	.blog-wrap{max-width:760px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(22px,3.6vw,46px)}
 	.blog-eyebrow{font-family:var(--mono);font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:16px}
-	.blog-wrap h1{font-size:clamp(2.2rem,7vw,3.8rem);text-transform:uppercase;letter-spacing:-.03em;line-height:.95;margin-bottom:18px}
-	.blog-lede{color:var(--text-2);font-size:1.06rem;line-height:1.6;max-width:60ch;margin:0 0 clamp(40px,5vw,64px);padding-bottom:clamp(40px,5vw,64px);border-bottom:1.5px solid var(--line)}
-	.post-list{list-style:none;padding:0;margin:0}
-	.post-list-item{padding:clamp(28px,3.5vw,40px) 0;border-bottom:1.5px solid var(--line)}
-	.post-list-meta{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);margin:0 0 12px}
-	.post-list-item h2{font-family:var(--display);font-size:clamp(1.4rem,3.4vw,2rem);text-transform:uppercase;letter-spacing:-.02em;line-height:1.02;margin:0 0 12px}
-	.post-list-item h2 a{color:var(--text);border-bottom:1.5px solid transparent;transition:color .3s var(--ease),border-color .3s var(--ease)}
-	.post-list-item h2 a:hover{color:var(--accent);border-bottom-color:var(--accent)}
-	.post-list-excerpt{color:var(--text-2);font-size:1.02rem;line-height:1.6;margin:0;max-width:64ch}
-	.post-list-tags{margin-top:14px}
+	.blog-wrap h1{font-size:clamp(2rem,6vw,3.4rem);text-transform:uppercase;letter-spacing:-.03em;line-height:.98;margin-bottom:20px}
+	.blog-meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin:0 0 28px}
+	.blog-tags{margin-bottom:clamp(36px,5vw,56px);padding-bottom:clamp(36px,5vw,56px);border-bottom:1.5px solid var(--line)}
 	.blog-tag{display:inline-block;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-2);border:1.5px solid var(--line-2);padding:5px 12px;margin:0 8px 8px 0}
-	.post-list-empty{color:var(--text-3);font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:40px 0}
+	.blog-body{color:var(--text-2);font-size:1.06rem;line-height:1.78}
+	.blog-body h2{font-family:var(--display);color:var(--text);font-size:clamp(1.3rem,3vw,1.7rem);text-transform:uppercase;letter-spacing:-.01em;line-height:1.08;margin:clamp(40px,5vw,60px) 0 16px}
+	.blog-body h3{font-family:var(--display);color:var(--text);font-size:1.2rem;text-transform:uppercase;letter-spacing:-.01em;margin:36px 0 12px}
+	.blog-body p{margin:0 0 1.4rem;max-width:68ch}
+	.blog-body ul,.blog-body ol{margin:0 0 1.4rem 1.2rem;max-width:68ch}
+	.blog-body li{margin:.4rem 0}
+	.blog-body a{color:var(--accent);border-bottom:1px solid transparent;transition:border-color .3s var(--ease)}
+	.blog-body a:hover{border-bottom-color:var(--accent)}
+	.blog-body strong{color:var(--text)}
+	.blog-body blockquote{border-left:2px solid var(--accent);margin:1.8rem 0;padding:.4rem 0 .4rem 1.4rem;color:var(--text);font-family:var(--display);font-weight:500;font-size:1.2rem;line-height:1.3;text-transform:uppercase;letter-spacing:-.01em}
+	.blog-body code{font-family:var(--mono);background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:.1em .4em;font-size:.86em;color:var(--text)}
+	.blog-body pre{background:var(--ground-2);border:1.5px solid var(--line);border-radius:6px;padding:1.1rem 1.3rem;overflow-x:auto;margin:0 0 1.6rem}
+	.blog-body pre code{background:transparent;border:0;padding:0;font-size:.86rem;color:var(--text-2)}
+	.blog-body img{max-width:100%;height:auto;border:1.5px solid var(--line);margin:1.6rem 0}
+	.blog-body hr{border:0;border-top:1.5px solid var(--line);margin:2.4rem 0}
+	.blog-backlink{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);margin-top:clamp(40px,5vw,56px);padding-top:clamp(36px,5vw,48px);border-top:1.5px solid var(--line);border-bottom:1px solid transparent}
+	.blog-backlink:hover{color:var(--accent)}
 	</style>
 </head>
 <body>
@@ -97,7 +110,7 @@
         <a href="/">Home</a>
         <a href="/#listen">Listen</a>
         <a href="/#works">Works</a>
-        <a href="/links/" data-track="true" data-entity="cta" data-action="click" data-target="links" data-page-type="blog-index">Links &rarr;</a>
+        <a href="/links/" data-track="true" data-entity="cta" data-action="click" data-target="links" data-page-type="blog-post">Links &rarr;</a>
         <a href="/#contact" class="cta">Contact</a>
       </nav>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
@@ -108,91 +121,29 @@
 <!-- MAIN -->
 <main id="main">
   <div class="container">
-    <div class="blog-wrap">
+    <article class="blog-wrap">
       <span class="blog-eyebrow">[ Writing ]</span>
-      <h1>Writing</h1>
-      <p class="blog-lede">Notes from the studio and the floor — electronic music, the underground, and the craft behind the records.</p>
-      <ul class="post-list">
+      <h1>For People Who Have a Hard Time Understanding Bass Music</h1>
+      <p class="blog-meta"><time datetime="2026-07-21">July 21, 2026</time></p>
+      <div class="blog-tags"><span class="blog-tag">culture</span></div>
+      <div class="blog-body">
+        <figure style="margin:0 0 1.8rem;"><img src="/assets/images/blog/understanding-bass-music/hero.png" alt="hand under blasting water, too fast to catch"><figcaption style="font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin-top:8px;">Photo: Michael Jeffrey / Unsplash</figcaption></figure>
 
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2026-07-21">July 21, 2026</time></p>
-          <h2><a href="understanding-bass-music/">For People Who Have a Hard Time Understanding Bass Music</a></h2>
-          <p class="post-list-excerpt">If you&#x27;ve ever tried to understand bass music and walked away feeling stupid, the problem probably isn&#x27;t you. The problem is that you tried to understand the whole thing at once, and the whole thing…</p>
-          <div class="post-list-tags"><span class="blog-tag">culture</span></div>
-        </li>
-
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2026-07-16">July 16, 2026</time></p>
-          <h2><a href="different-genres-different-styles-of-mixing/">Different Genres, Different Styles of Mixing</a></h2>
-          <p class="post-list-excerpt">Watch most hypnotic techno house DJs for ten minutes, and you&#x27;ll notice something: the crossfader barely moves from the center. Two records are playing at once, almost the whole time, and the set is…</p>
-          <div class="post-list-tags"><span class="blog-tag">dj</span><span class="blog-tag">performance</span></div>
-        </li>
-
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2026-07-12">July 12, 2026</time></p>
-          <h2><a href="getting-a-deep-multilayered-sound/">Getting a Deep, Multilayered Sound</a></h2>
-          <p class="post-list-excerpt">A track that feels thin almost never has too few instruments. It has too few voices. That&#x27;s a different problem, and once you see the difference, the fix stops being &quot;add more stuff&quot; and becomes…</p>
-          <div class="post-list-tags"><span class="blog-tag">production</span></div>
-        </li>
-
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2026-07-08">July 8, 2026</time></p>
-          <h2><a href="how-i-discover-music/">How I Discover Music</a></h2>
-          <p class="post-list-excerpt">When people ask me how I find new music, what they usually expect is a genre map — a clean tree that tells them where everything fits. I gave up on that idea many years ago.</p>
-          <div class="post-list-tags"><span class="blog-tag">philosophy</span></div>
-        </li>
-
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2026-07-04">July 4, 2026</time></p>
-          <h2><a href="my-live-set-configuration/">My Live Set Configuration</a></h2>
-          <p class="post-list-excerpt">The full breakdown of my Ableton Live rig — two decks, eight channels, eight-bar loops. Every routing choice serves one goal: nothing goes wrong on a dancefloor that I can&#x27;t recover from in a couple of seconds.</p>
-          <div class="post-list-tags"><span class="blog-tag">dj</span><span class="blog-tag">performance</span></div>
-        </li>
-
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2026-06-29">June 29, 2026</time></p>
-          <h2><a href="choose-your-workflow-then-your-gear/">Choose Your Workflow, Then Your Gear</a></h2>
-          <p class="post-list-excerpt">Most people buy the gear first and figure out what to do with it second. It&#x27;s backward. Decide what you want your hands to do, design the controls you need, then go find the hardware that matches.</p>
-          <div class="post-list-tags"><span class="blog-tag">production</span></div>
-        </li>
-
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2026-06-27">June 27, 2026</time></p>
-          <h2><a href="the-tool-was-never-the-problem/">The Tool Was Never the Problem</a></h2>
-          <p class="post-list-excerpt">Sampling, the drum machine, the DAW — every one of them was going to kill real music. AI is the newest moral panic in a long line. But there is a real line this time, and it isn&#x27;t the tool. It&#x27;s authorship.</p>
-          <div class="post-list-tags"><span class="blog-tag">ai</span><span class="blog-tag">authenticity</span><span class="blog-tag">underground</span></div>
-        </li>
-
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2026-06-26">June 26, 2026</time></p>
-          <h2><a href="printing-your-midi/">To Producers Afraid of Printing Their MIDI</a></h2>
-          <p class="post-list-excerpt">Why committing your sound — printing MIDI to audio — is what lets it finally become something, and where the real work starts.</p>
-          <div class="post-list-tags"><span class="blog-tag">studio notes</span><span class="blog-tag">production</span></div>
-        </li>
-
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2026-06-23">June 23, 2026</time></p>
-          <h2><a href="the-long-version/">The Long Version</a></h2>
-          <p class="post-list-excerpt">A record is the short version. This is where the long version lives — the rooms, the gear, and the reasons behind the tracks.</p>
-          <div class="post-list-tags"><span class="blog-tag">studio notes</span><span class="blog-tag">underground</span></div>
-        </li>
-
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2023-08-10">August 10, 2023</time></p>
-          <h2><a href="how-law-shaped-underground-dance-culture/">Rave Revolution: How UK + US Laws Shaped Underground Dance Culture</a></h2>
-          <p class="post-list-excerpt">Early raves attracted people with renegade spirits because they were illegal. How four decades of UK and US law pushed dance culture underground, overground, and back again.</p>
-          <div class="post-list-tags"><span class="blog-tag">underground</span><span class="blog-tag">rave history</span><span class="blog-tag">electronic music</span><span class="blog-tag">law</span></div>
-        </li>
-
-        <li class="post-list-item">
-          <p class="post-list-meta"><time datetime="2023-07-30">July 30, 2023</time></p>
-          <h2><a href="how-sampling-transformed-music/">How Sampling Transformed Music (A Short History of Sampling)</a></h2>
-          <p class="post-list-excerpt">The single most important invention in the history of music is the phonograph. The second is the sampler — and a short history of how it rewrote music, culture, and law.</p>
-          <div class="post-list-tags"><span class="blog-tag">music history</span><span class="blog-tag">sampling</span><span class="blog-tag">copyright</span></div>
-        </li>
-
-      </ul>
-    </div>
+<p>If you've ever tried to understand bass music and walked away feeling stupid, the problem probably isn't you. The problem is that you tried to understand the whole thing at once, and the whole thing is enormous. Bass music is the broadest, most sprawling super-umbrella in all of dance music. Trying to grasp it as a single object is drinking from a firehose. Of course, you couldn't hold it. Nobody can.</p>
+<p>Look at what's actually under there. Dubstep, trap, drum &amp; bass, bassline house, several flavors of garage, nu-skool breaks, dub, moombahton and moombahcore, half a dozen crossover styles that technically belong to other families. D&amp;B alone has spun off a couple dozen distinct subgenres over the last thirty-some years. And the differences inside a single genre can be wider than the differences between two genres you'd think of as opposites. Put classic neurofunk D&amp;B next to ragga jungle. Neurofunk is clean, sterile, almost clinical — synthetic drums, sci-fi tones, modulated bass instruments that border on leads, everything built around mid-range timbre over a tight sub. Ragga jungle is the opposite instinct: chopped-up live breakbeats, often the amen break, heavy reggae elements, warm 808 basslines, ragga vocals. Those two are as far apart as techno is from house. And they're both drum &amp; bass. They're both bass music.</p>
+<p>So here's the first thing I'd tell anyone trying to find their footing: stop trying to take it all on. Find one corner you actually like and learn that corner deeply. Be specific. What gets you going — liquid funk, riddim dubstep, UK bass, bass house? Pick the real thing, not the category. Learn what makes that one sound tick, what its drums do, how its bass behaves, and why it feels the way it feels. Then, once you've got it in your body, branch outward and notice what the neighboring styles share with it and where they part ways. Understanding spreads out from a center. It doesn't arrive all at once from above.</p>
+<h2>The map nobody hands you</h2>
+<p>There's a more useful way to see the whole family, though, and it took me a long time to articulate it. Most of these genres can be understood by what they keep from D&amp;B and what they throw away. Drum &amp; bass was the original bass music genre, and almost everything that came after is in some kind of conversation with it.</p>
+<p>Start with the four-on-the-floor side, the styles that march on a steady kick. Take mid-90s house and graft on the square-wave or FM basslines from early drum &amp; bass, and you're in future-house territory. Get harder and darker with that bassline, pull the drums back toward early Chicago house, and you've got bassline house, or night bass. Pile in more swing and shuffle, and you've drifted into UK bass, UK garage, speed garage. Same lineage, different posture.</p>
+<p>Then there's the broken-beat side, where the kick stops being a metronome. Here, the bass could be a clean, warm 808 sub or a squelchy, modulated, alien-sounding thing all up in the mid-range — and which one you choose is often the whole difference between two subgenres. So watch the drums. Drop the tempo to 110, syncopate the snare, and you're making moombahton; lean on triplets, and it's even more canonical. Use a heavier modulated bass and electro-house's exact kick-and-snare grid, and you've got moombahcore — though moombahcore is loose enough that sometimes the snare swallows the kick, sometimes there's no snare at all, sometimes the drums go full breakbeat. Push the tempo up to 160 or 180, keep the snares on 2 and 4, and that's classic two-step drum &amp; bass. Move the snares somewhere odd, re-grid the kicks to match, and it becomes four-step D&amp;B. Take that two-step pattern and halve the kick and snare while leaving everything else at full speed, and you're basically in drumstep. Put a kick on 1 and a snare on 3, drop to 140, and that's the spine of dubstep. Pull the tempo back to the 125—135 BPM, build a breakbeat — programmed, chopped, or both — slide a drum-and-bass bassline underneath, and you're making nu-skool breaks. Or build a Southern hip-hop beat anywhere from 115 to 160, and you're writing trap, which can sit right next to hip-hop or right next to festival tear-out, depending on what instruments you reach for.</p>
+<p>That's nowhere near a complete list. It isn't meant to be. It's meant to show you that the distances between these styles are real and large, and that they're navigable if you take them one move at a time. The only thing all of these genres truly share is an obsession with the relationship between rhythm and bassline. Beyond that, they disagree (loudly) about what that rhythm and that bassline should be. That disagreement is the genre. It's the whole creative engine.</p>
+<h2>Why the firehose feeling is the good news</h2>
+<p>Music is fluid, and the best of it actively refuses to sit in one box. I love records that are clearly built like one genre but run at the wrong tempo for it, or that promise to be an emotional progressive-house track right up until the drop turns them into something with a trap bassline, a moombahton lead, and breakbeat drums all at once. People argue about how to file those. That argument is a feature. When you stop needing a song to have a correct genre, you can ask the better question — what is it about this particular sound that's got me? Is it the character of the drums, the groove, the timbre of the bass? Chase that thread, and it'll lead you to everything else worth hearing.</p>
+<p>This is also why the map I just walked you through has soft edges instead of hard walls, and why that's a good thing rather than a flaw. The genres bleed. A moombahcore track might drop its snare in a way that's pure dubstep for four bars; a trap record can sit so close to hip-hop it's barely dance music, or so close to festival tear-out it's nothing like hip-hop. The "right" label is often just whichever set of choices a producer happened to lean on hardest that day. So if you find yourself loving something that won't classify, that's not a problem to solve. It usually means you've found a record doing something genuinely its own, pulling from two or three lineages at once — and those are frequently the most interesting records in the room. Let the song be what it is. Your job as a listener isn't to be right about the folder it belongs in. It's to figure out what it's doing to you and go find more of that.</p>
+<p>The part I'd want someone outside dance music to take in, even if they never learn a single one of these names, is that the overwhelm you feel staring at a giant, unfamiliar field isn't a sign that the field is incoherent, and it isn't a sign that you're not smart enough for it. It's just the natural feeling of standing in front of more than anyone can absorb in a sitting. The way in is never to swallow the whole thing. It's to fall in love with one specific piece of it, learn that piece until it's yours, and let your understanding grow outward from something that matters to you. That works for bass music. And it works for almost anything worth understanding.</p>
+      </div>
+      <a class="blog-backlink" href="/blog/">&larr; All writing</a>
+    </article>
   </div>
 </main>
 
