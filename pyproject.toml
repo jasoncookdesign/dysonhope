@@ -1,0 +1,19 @@
+[project]
+name = "dysonhope-blog-tools"
+version = "0.1.0"
+description = "Blog generator and local publishing drip for dysonhope.com"
+requires-python = ">=3.12"
+dependencies = [
+  "markdown==3.10.2",
+  "pyyaml==6.0.2",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tools/blog/tests"]
+pythonpath = ["tools/blog"]

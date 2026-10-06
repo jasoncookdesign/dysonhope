@@ -49,3 +49,7 @@ examples/**/env.d.ts
 # https://github.com/withastro/astro/pull/11759#discussion_r1721444711)
 *.code-workspace
 packages/astro/e2e/fixtures/cloudflare/.wrangler/deploy/config.json
+# Python tooling for the blog
+.venv/
+__pycache__/
+.pytest_cache/
