@@ -79,6 +79,10 @@ There is **no** Bootstrap, jQuery, carousel/lightbox/scroll-animation library, S
 ├── content/blog/           # blog post sources (Markdown + YAML frontmatter)
 ├── templates/blog/         # blog templates (post.html, index.html)
 ├── blog.config.json        # blog generator config (paths + site metadata)
+├── tools/blog/             # blog generator + scheduled-publishing drip (Python, tests in tests/)
+├── launchd/                # daily drip job for the publishing Mac (install.sh / uninstall.sh)
+├── docs/blog-drip/         # drip requirements and architecture
+├── pyproject.toml, uv.lock # Python deps for tools/blog (run with uv)
 ├── CNAME                    # custom domain (dysonhope.com)
 └── assets/
     ├── css/dysonhope.css    # the design system (only stylesheet)
@@ -146,11 +150,22 @@ cover_image:   assets/blog/x.jpg   # optional; used for the social/og:image
 canonical_url: optional            # optional; set only when syndicating the post elsewhere
 ```
 
-**Publishing a post:**
+**Publishing a post now:**
 
-1. Add `content/blog/<YYYY-MM-DD-slug>.md` with frontmatter and a Markdown body.
-2. Regenerate with the blog generator (Python; requires the `markdown` and `pyyaml` packages), pointing it at `blog.config.json`. It renders every non-draft post and (re)writes the `blog/` directory deterministically.
-3. Commit the new Markdown **and** the regenerated `blog/` files, then open a PR from the fork. Merging to the canonical default branch publishes to [dysonhope.com/blog/](https://dysonhope.com/blog/).
+1. Add `content/blog/<YYYY-MM-DD-slug>.md` with frontmatter and a Markdown body. Put the hero at `assets/images/blog/<slug>/hero.png`.
+2. Regenerate: `uv run python tools/blog/generator.py --config blog.config.json`. It renders every non-draft post and rewrites `blog/` deterministically.
+3. Commit the Markdown, the image **and** the regenerated `blog/` files, then open a PR. Merging to `main` publishes to [dysonhope.com/blog/](https://dysonhope.com/blog/).
+
+**Scheduling posts (the drip):** posts dated in the future stay on the publishing Mac, never in git, until their day comes.
+
+- **Queue:** `~/DysonHope/blog-queue/` holds one directory per post, named `YYYY-MM-DD-<slug>`. Each directory mirrors repo paths: `content/blog/<file>.md` plus `assets/images/blog/<slug>/hero.*`. Anything else in it is rejected.
+- **Daily run:** a launchd job runs `tools/blog/drip.py` at 07:00 against a dedicated clone, `~/DysonHope/site`, kept on `main`. Each run publishes the oldest due post (at most one), regenerates `blog/`, commits `feat(blog): publish "<title>"`, pushes `main`, and moves the directory to `blog-queue/published/`.
+- **Failures:** on any failure the clone is reset to `origin/main` and the post stays queued for the next run.
+- **Logs:** `~/Library/Logs/dysonhope/blog-drip.log` (one line per run) and `blog-drip.err.log`.
+- **Install or update:** `launchd/install.sh`, run from a clone of `main`. Env overrides: `DRIP_SITE` (publishing clone), `DRIP_QUEUE` (queue dir), `UV` (path to uv).
+- **Remove:** `launchd/uninstall.sh`.
+- **Run once now:** `launchctl kickstart gui/$(id -u)/com.jasoncookdesign.dysonhope.blog-drip`.
+- **Tests:** `uv run pytest`.
 
 Blog asset and navigation links are root-relative (`/assets/...`, `/blog/`), so preview by serving the **repo root** and visiting `/blog/`:
 
