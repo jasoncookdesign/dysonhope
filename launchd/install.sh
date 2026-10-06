@@ -15,10 +15,11 @@ mkdir -p "$LOG_DIR" "$AGENTS" "$QUEUE"
 
 if [ ! -d "$SITE/.git" ]; then
   git clone --quiet "$(git -C "$REPO" remote get-url origin)" "$SITE"
-  git -C "$SITE" config user.name "$(git -C "$REPO" config user.name)"
-  git -C "$SITE" config user.email "$(git -C "$REPO" config user.email)"
 fi
-(cd "$SITE" && "$UV" sync --quiet --no-dev)
+git -C "$SITE" config user.name "$(git -C "$REPO" config user.name)"
+git -C "$SITE" config user.email "$(git -C "$REPO" config user.email)"
+git -C "$SITE" pull --quiet --ff-only
+(cd "$SITE" && "$UV" sync --quiet --frozen --no-dev)
 
 esc() { printf '%s' "$1" | sed -e 's/[&|\\]/\\&/g'; }
 dest=$AGENTS/$LABEL.plist

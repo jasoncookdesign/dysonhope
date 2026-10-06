@@ -115,6 +115,7 @@ def test_only_due_post_reaches_origin(site):
     assert "marker-bravo" not in log and "marker-charlie" not in log
     assert not a.exists() and (site["queue"] / "published" / a.name).is_dir()
     assert b.exists() and c.exists()
+    assert git(site["repo"], "status", "--porcelain", "--untracked-files=all") == ""
 
 
 def test_second_run_publishes_next_due(site):
@@ -177,7 +178,9 @@ def test_bad_staged_dir_name_rejected(site, name):
 
 @pytest.mark.parametrize("rel", ["index.html", "content/other.md",
                                  "assets/images/blog/someone-else/hero.png",
-                                 "content/blog/sub/x.md", "blog/alpha/index.html"])
+                                 "content/blog/sub/x.md", "blog/alpha/index.html",
+                                 "assets/images/blog/alpha/sub/hero.png",
+                                 "assets/images/blog/alpha/notes.txt"])
 def test_staged_path_outside_allowed_tree_rejected(site, rel):
     d = stage(site["queue"], "2026-10-07", "alpha", extra={rel: "x"})
     before = origin_head(site)
@@ -278,29 +281,64 @@ def test_already_live_post_is_archived_without_commit(site):
 # ── REQ-08: CLI ──────────────────────────────────────────────────────────────
 
 def test_cli_publishes_and_reports(site, capsys):
-    stage(site["queue"], "2026-10-07", "alpha")
+    stage(site["queue"], "2026-01-05", "alpha")
     code = drip.main(["--repo", str(site["repo"]), "--queue", str(site["queue"]),
-                      "--today", "2026-10-07"])
+                      "--today", "2026-01-05"])
     out = capsys.readouterr().out
     assert code == 0
     assert out.strip() == f"published alpha {origin_head(site)}"
 
 
-@pytest.mark.parametrize("later", ["2026-10-11", "2026-12-25"])
+@pytest.mark.parametrize("later", ["2026-02-11", "2026-03-25"])
 def test_cli_nothing_due(site, capsys, later):
-    stage(site["queue"], "2027-01-01", "much-later")
+    stage(site["queue"], "2026-04-01", "much-later")
     stage(site["queue"], later, "later")
     code = drip.main(["--repo", str(site["repo"]), "--queue", str(site["queue"]),
-                      "--today", "2026-10-07"])
+                      "--today", "2026-01-05"])
     assert code == 0
     assert capsys.readouterr().out.strip() == f"nothing due (next: {later})"
 
 
 def test_cli_error_exits_nonzero(site, capsys):
-    stage(site["queue"], "2026-10-07", "alpha")
+    stage(site["queue"], "2026-01-05", "alpha")
     (site["repo"] / "README.md").write_text("dirty")
     code = drip.main(["--repo", str(site["repo"]), "--queue", str(site["queue"]),
-                      "--today", "2026-10-07"])
+                      "--today", "2026-01-05"])
     captured = capsys.readouterr()
     assert code == 1
     assert "RepoStateError" in captured.err
+
+
+def test_cli_refuses_future_today(site, capsys):
+    """--today must never let a post go live before its real date."""
+    tomorrow = dt.date.today() + dt.timedelta(days=1)
+    d = stage(site["queue"], tomorrow.isoformat(), "alpha")
+    before = origin_head(site)
+    code = drip.main(["--repo", str(site["repo"]), "--queue", str(site["queue"]),
+                      "--today", tomorrow.isoformat()])
+    assert code != 0
+    assert "future" in capsys.readouterr().err
+    assert origin_head(site) == before and d.exists()
+
+
+def test_staged_symlink_rejected(site, tmp_path):
+    secret = tmp_path / "secret.txt"
+    secret.write_text("not for publishing")
+    d = stage(site["queue"], "2026-10-07", "alpha")
+    (d / "assets/images/blog/alpha/hero.png").unlink()
+    (d / "assets/images/blog/alpha/hero.png").symlink_to(secret)
+    before = origin_head(site)
+    with pytest.raises(drip.StagingError):
+        drip.run(site["repo"], site["queue"], TODAY)
+    assert origin_head(site) == before and d.exists()
+
+
+def test_concurrent_run_refused(site):
+    import fcntl
+    d = stage(site["queue"], "2026-10-07", "alpha")
+    with open(site["queue"] / drip.LOCK_FILE, "w") as held:
+        fcntl.flock(held, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        before = origin_head(site)
+        with pytest.raises(drip.DripError, match="another run"):
+            drip.run(site["repo"], site["queue"], TODAY)
+        assert origin_head(site) == before and d.exists()

@@ -19,7 +19,9 @@ Usage (from the repo root):
 from __future__ import annotations
 
 import argparse
+import contextlib
 import datetime as dt
+import fcntl
 import json
 import re
 import shutil
@@ -32,6 +34,7 @@ import generator
 
 _STAGED_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})-([a-z0-9][a-z0-9-]*)$")
 PUBLISHED_DIR = "published"
+LOCK_FILE = ".drip.lock"
 
 
 class DripError(Exception):
@@ -82,19 +85,22 @@ def _staged(queue: Path) -> list[Staged]:
 
 def _files(item: Staged) -> list[Path]:
     """Validated repo-relative file paths of a staged post."""
-    files = sorted(p.relative_to(item.path) for p in item.path.rglob("*")
-                   if p.is_file() and p.name != ".DS_Store")
+    entries = [p for p in item.path.rglob("*") if p.name != ".DS_Store"]
+    for p in entries:
+        if p.is_symlink():
+            raise StagingError(f"{item.path.name}: {p.relative_to(item.path)} is a symlink")
+    files = sorted(p.relative_to(item.path) for p in entries if p.is_file())
     hero_prefix = ("assets", "images", "blog", item.slug)
     posts = []
     for rel in files:
         parts = rel.parts
         if len(parts) == 3 and parts[:2] == ("content", "blog") and rel.suffix == ".md":
             posts.append(rel)
-        elif len(parts) > 4 and parts[:4] == hero_prefix:
+        elif len(parts) == 5 and parts[:4] == hero_prefix and rel.stem == "hero":
             continue
         else:
-            raise StagingError(f"{item.path.name}: {rel} is outside content/blog/ "
-                               f"and assets/images/blog/{item.slug}/")
+            raise StagingError(f"{item.path.name}: {rel} is not content/blog/*.md "
+                               f"or assets/images/blog/{item.slug}/hero.*")
     if len(posts) != 1:
         raise StagingError(f"{item.path.name}: needs exactly one content/blog/*.md, found {len(posts)}")
     return files
@@ -143,8 +149,23 @@ def _archive(item: Staged, queue: Path) -> None:
     shutil.move(str(item.path), str(dest / item.path.name))
 
 
+@contextlib.contextmanager
+def _lock(queue: Path):
+    with open(queue / LOCK_FILE, "w") as fh:
+        try:
+            fcntl.flock(fh, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError as exc:
+            raise DripError("another run holds the queue lock") from exc
+        yield
+
+
 def run(repo: Path, queue: Path, today: dt.date, push: bool = True) -> Result:
     repo, queue = Path(repo), Path(queue)
+    with _lock(queue):
+        return _run_locked(repo, queue, today, push)
+
+
+def _run_locked(repo: Path, queue: Path, today: dt.date, push: bool) -> Result:
     items = _staged(queue)
     due = [s for s in items if s.date <= today]
     if not due:
@@ -187,9 +208,14 @@ def main(argv=None) -> int:
     ap.add_argument("--repo", required=True, help="dysonhope repo clone (on main, clean)")
     ap.add_argument("--queue", required=True, help="local staged-post dir (outside the repo)")
     ap.add_argument("--today", type=dt.date.fromisoformat, default=None,
-                    help="override today's date, YYYY-MM-DD (testing)")
+                    help="override today's date, YYYY-MM-DD (past dates only)")
     args = ap.parse_args(argv)
-    today = args.today or dt.date.today()
+    real_today = dt.date.today()
+    today = args.today or real_today
+    if today > real_today:
+        print(f"DripError: --today {today} is in the future; refusing to publish early",
+              file=sys.stderr)
+        return 1
     try:
         result = run(Path(args.repo).expanduser(), Path(args.queue).expanduser(), today)
     except DripError as exc:

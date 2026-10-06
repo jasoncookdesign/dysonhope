@@ -9,6 +9,8 @@
     <string>@@UV@@</string>
     <string>run</string>
     <string>--quiet</string>
+    <string>--frozen</string>
+    <string>--no-dev</string>
     <string>--project</string>
     <string>@@SITE@@</string>
     <string>python</string>
