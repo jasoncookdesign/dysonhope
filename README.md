@@ -162,7 +162,8 @@ canonical_url: optional            # optional; set only when syndicating the pos
 - **Daily run:** a launchd job runs `tools/blog/drip.py` at 07:00 against a dedicated clone, `~/DysonHope/site`, kept on `main`. Each run publishes the oldest due post (at most one), regenerates `blog/`, commits `feat(blog): publish "<title>"`, pushes `main`, and moves the directory to `blog-queue/published/`.
 - **Failures:** on any failure the clone is reset to `origin/main` and the post stays queued for the next run. One case can't roll back: the run is killed between commit and push, which leaves the clone ahead of `origin`. Every later run then refuses with `RepoStateError: main has commits that are not on origin/main`. To recover, run `git -C ~/DysonHope/site reset --hard origin/main`. The post is still queued, so the next run publishes it. Don't push that local commit by hand: it may hold a post that isn't due yet.
 - **Logs:** `~/Library/Logs/dysonhope/blog-drip.log` (one line per run) and `blog-drip.err.log`.
-- **Install or update:** `launchd/install.sh`, run from a clone of `main`. Env overrides: `DRIP_SITE` (publishing clone), `DRIP_QUEUE` (queue dir), `UV` (path to uv).
+- **Alerts:** the job runs under a failure reporter (`JOB_ALERT`). A failed run opens an issue in the owner's private work queue, and the next good run closes it. "Nothing due" counts as a good run.
+- **Install or update:** `launchd/install.sh`, run from a clone of `main`. Env overrides: `DRIP_SITE` (publishing clone), `DRIP_QUEUE` (queue dir), `UV` (path to uv), `JOB_ALERT` (path to the failure reporter), `ALERT_PYTHON` (python3 that runs it).
 - **Remove:** `launchd/uninstall.sh`.
 - **Run once now:** `launchctl kickstart gui/$(id -u)/com.jasoncookdesign.dysonhope.blog-drip`.
 - **Tests:** `uv run pytest`. `--today` accepts past dates only, so testing can't publish early.
