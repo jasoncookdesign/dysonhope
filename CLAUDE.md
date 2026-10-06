@@ -1,13 +1,15 @@
-# REPO_NAME
+# dysonhope
 
-<One line: what this is and what merging to main does (deploys? nothing?).>
+Static site for dysonhope.com. GitHub Pages serves it straight from main, so merging publishes immediately.
 
-- Preview / run: <command>
-- Generated output (never hand-edit): <paths, or "none">
-- Repo conventions: <anything specific>
+- Preview: run `python3 -m http.server` from the repo root.
+- Blog: Markdown in `content/blog/` is rendered into `blog/` with `templates/blog/` (config in `blog.config.json`).
+- Generated, never hand-edit: the pages in `blog/`.
+- `main` is unprotected on purpose: scheduled blog publishing pushes straight to it. Don't add branch protection unless that publishing moves to PRs. Claude's own changes still go through PRs.
+- Public repo: keep internal ticket IDs and machine names out of commits, code and docs.
 
 ## TDD exception (recorded ruling)
-<What has no test runner here and is exempt; what gets full TDD.>
+Static HTML and CSS with no test runner, so exempt. Any script added here, such as the blog generator or the drip, gets full TDD.
 
 <!-- BEGIN agentic-sdlc disciplines @68c3f3c -->
 
