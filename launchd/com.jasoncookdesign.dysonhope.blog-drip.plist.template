@@ -6,6 +6,12 @@
   <key>Label</key><string>com.jasoncookdesign.dysonhope.blog-drip</string>
   <key>ProgramArguments</key>
   <array>
+    <string>@@ALERT_PYTHON@@</string>
+    <string>@@JOB_ALERT@@</string>
+    <string>--job</string><string>dysonhope-blog-drip</string>
+    <string>--log</string><string>@@LOG_DIR@@/blog-drip.log</string>
+    <string>--log</string><string>@@LOG_DIR@@/blog-drip.err.log</string>
+    <string>--</string>
     <string>@@UV@@</string>
     <string>run</string>
     <string>--quiet</string>
