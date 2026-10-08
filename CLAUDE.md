@@ -8,7 +8,7 @@ Static site for dysonhope.com. GitHub Pages serves it straight from main, so mer
 - Generated, never hand-edit: the pages in `blog/`.
 - `main` is unprotected on purpose: scheduled blog publishing pushes straight to it. Don't add branch protection unless that publishing moves to PRs. Claude's own changes still go through PRs.
 - Public repo: keep internal ticket IDs and machine names out of commits, code and docs.
-- Copy for the site and blog (pages, posts, captions): draft with `/writing:voiced-draft`, which loads the Dyson Hope voice profile, the format contract and house style. Draft only; Jason publishes.
+- Copy for the site, blog and social captions: draft with `/writing:voiced-draft`, which loads the Dyson Hope voice profile, the format contract and house style. Draft only; Jason publishes.
 
 ## TDD exception (recorded ruling)
 Static HTML and CSS are exempt. The Python in `tools/blog/` is not: it gets full TDD under pytest.
