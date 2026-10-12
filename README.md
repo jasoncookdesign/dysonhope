@@ -75,6 +75,7 @@ There is **no** Bootstrap, jQuery, carousel/lightbox/scroll-animation library, S
 ├── calendar/index.html     # legacy redirect → /#schedule (studio booking is now on-domain)
 ├── links/index.html        # link-in-bio hub
 ├── privacy/index.html      # privacy policy
+├── press/index.html        # press kit (EPK) for promoters, venues, and bookers
 ├── blog/                   # GENERATED blog — listing, per-post pages, RSS (do not hand-edit)
 ├── content/blog/           # blog post sources (Markdown + YAML frontmatter)
 ├── templates/blog/         # blog templates (post.html, index.html)
@@ -89,7 +90,7 @@ There is **no** Bootstrap, jQuery, carousel/lightbox/scroll-animation library, S
     ├── images/              # covers, favicon, hero poster, textures
     ├── video/hero-loop.mp4  # homepage hero loop
     ├── svg/                 # brand logo source files
-    ├── press/               # press kit (logos, photo, zip)
+    ├── press/               # press kit downloads (photos, logo set, bios, full-kit zip)
     └── plugins/font-awesome # icon webfont (css/ + webfonts/)
 ```
 
@@ -117,6 +118,11 @@ No build step is required. Edit the HTML/CSS directly.
 - **`calendar/index.html`** — a legacy-compatibility redirect (JS `location.replace` that keeps the query string, with a `<noscript>` meta refresh fallback) to the on-domain `/#schedule` embed. It loads no analytics. Studio booking previously lived here as a branded interstitial that forwarded visitors to an external scheduler; it now happens inline on the homepage. The route is kept so any existing shared `/calendar/` links still resolve.
 
 > **Schedule vs. Calendar.** "Schedule" names the **studio-booking** function (the Cal.com embed at `#schedule`). "Calendar" is reserved for a future **live-events** section (`#calendar`, currently commented out) listing where and when Dyson Hope is playing. Studio bookings run on the shared Cal.com account `jasoncookdesign` (event: [`cal.com/jasoncookdesign/studio`](https://cal.com/jasoncookdesign/studio), 120 / 180 / 240-minute options).
+- **`press/index.html`** — the press kit (EPK) for promoters, venues, and bookers, linked as **Press** in every page's navigation and footer: positioning line, short and long bio, sound, Listen (lead mix plus more sets), releases, selected history, downloads, and booking. Downloads live in `assets/press/`:
+  - `DH-photo.jpg` (hi-res press photo, served with a `dyson-hope-press-photo-hires.jpg` download name) and its web crops `dyson-hope-press-photo-{portrait-1080,square-1200,landscape-1200x630}.jpg`;
+  - `Dyson_Hope_logo_set.zip` (wordmark and square logos, PNG and SVG);
+  - `dyson-hope-bios.txt` (one-line, short, and long bio, matching the page copy);
+  - `dyson-hope-press-kit.zip`, which bundles all of the above. It is built by hand, so rebuild it whenever a photo, a logo, or the bios change, and keep the bios on the page and in the `.txt` identical.
 - **`blog/`** — the writing section, reachable from the **Blog** link in the main navigation (between Works and Links). The pages here are generated; see [Writing (Blog)](#writing-blog).
 
 ### Writing (Blog)
@@ -196,6 +202,8 @@ Interactive elements (CTAs, platform/store links, social links, release/mix item
 - `data-entity`, `data-action`, `data-target` — the event taxonomy
 - `data-platform`, `data-page-type` — context
 - `data-release-title`, `data-mix-title`, `data-cta-type` — payload detail
+
+On the press page, download links carry `data-entity="press_kit"` and `data-action="download"` (with `data-target` naming the file, such as `press_kit_zip` or `photo_hires`), mix links carry `data-entity="mix"` and `data-mix-title`, and the booking CTAs use `data-cta-type="booking"`.
 
 A click on a `data-track="true"` element pushes `event: "dysonhope_event"` with those values as `entity`, `action`, `target`, `platform`, `page_type`, `release_title`, `mix_title` and `cta_type`, plus `link_text` and `link_url` (query string and hash removed). A click on any `mailto:` link, tracked or not, also pushes `event: "generate_lead"` with `method: "email"`. Email addresses and phone numbers are never pushed. GTM maps these events to GA4; the GA4 tags need matching event parameters and triggers in the container.
 
