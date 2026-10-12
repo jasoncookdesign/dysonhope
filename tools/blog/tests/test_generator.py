@@ -217,3 +217,18 @@ class TestGolden(unittest.TestCase):
         for rel in manifest["written"]:
             self.assertEqual((out / rel).read_bytes(), (REPO / cfg["out"] / rel).read_bytes(),
                              f"generated output differs from committed: {rel}")
+
+
+class TestRealTemplatesLoadTracking(unittest.TestCase):
+    def test_every_generated_page_loads_the_click_tracker(self):
+        """Blog pages carry the same consent loader and click tracker as the hand-authored pages."""
+        cfg = json.loads((REPO / "blog.config.json").read_text())
+        ctx = {k: cfg[k] for k in ("site_title", "blog_url", "author")}
+        out = pathlib.Path(tempfile.mkdtemp()) / "blog"
+        manifest = bloggen.build(REPO / cfg["content"], REPO / cfg["templates"], out, ctx)
+        pages = [rel for rel in manifest["written"] if rel.endswith(".html")]
+        self.assertGreater(len(pages), 20)
+        for rel in pages:
+            text = (out / rel).read_text()
+            self.assertIn("dh_cookie_consent", text, rel)
+            self.assertIn('<script src="/assets/js/tracking.js" defer></script>', text, rel)

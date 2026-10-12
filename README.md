@@ -188,14 +188,18 @@ All contact is handled via `mailto:` links — there is no form or backend.
 
 Page analytics run through **Google Tag Manager** (container `GTM-5T87PLM6`), loaded on every page (including the generated blog pages) behind the cookie-consent gate. GTM is the only third-party script embedded in the site.
 
-To support event mapping in the tag manager, interactive elements (CTAs, platform/store links, social links, release/mix items) carry declarative data attributes that describe the interaction:
+Click tracking lives in `assets/js/tracking.js`, included on every page and in both blog templates. It is a single delegated click listener that pushes to `window.dataLayer` only after the visitor clicks **Accept** (the same `dh_cookie_consent` value that loads GTM). Before consent, or after Decline, it pushes nothing.
+
+Interactive elements (CTAs, platform/store links, social links, release/mix items) carry declarative data attributes that describe the interaction:
 
 - `data-track="true"` — marks an element for click tracking
 - `data-entity`, `data-action`, `data-target` — the event taxonomy
 - `data-platform`, `data-page-type` — context
 - `data-release-title`, `data-mix-title`, `data-cta-type` — payload detail
 
-These attributes are consumed by GTM; no first-party tracking script is checked into the repo.
+A click on a `data-track="true"` element pushes `event: "dysonhope_event"` with those values as `entity`, `action`, `target`, `platform`, `page_type`, `release_title`, `mix_title` and `cta_type`, plus `link_text` and `link_url` (query string and hash removed). A click on any `mailto:` link, tracked or not, also pushes `event: "generate_lead"` with `method: "email"`. Email addresses and phone numbers are never pushed. GTM maps these events to GA4; the GA4 tags need matching event parameters and triggers in the container.
+
+`/calendar/` is a legacy redirect to `/#schedule`. It loads no analytics and keeps the query string, so UTMs on shared links reach the landing page.
 
 ---
 
