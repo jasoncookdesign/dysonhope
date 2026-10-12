@@ -114,7 +114,7 @@ No build step is required. Edit the HTML/CSS directly.
 
 - **`index.html`** — main artist page: video hero, statement bar, **Listen** (platform links + Spotify embed), **Works** (release grid), about/interlude, **Contact** (mailto CTAs), **Schedule** (an always-visible Cal.com inline embed for booking studio sessions), and a social/connections footer. Single-page anchor nav (`#home`, `#listen`, `#works`, `#contact`); `#schedule` is bookmarkable but intentionally not in the nav.
 - **`links/index.html`** — "link in bio" hub with featured releases (per-platform outbound links) and streaming/social tiles. Self-contained inline styling on top of the shared design system.
-- **`calendar/index.html`** — a legacy-compatibility redirect (`meta refresh` + JS fallback) to the on-domain `/#schedule` embed. Studio booking previously lived here as a branded interstitial that forwarded visitors to an external scheduler; it now happens inline on the homepage. The route is kept so any existing shared `/calendar/` links still resolve.
+- **`calendar/index.html`** — a legacy-compatibility redirect (JS `location.replace` that keeps the query string, with a `<noscript>` meta refresh fallback) to the on-domain `/#schedule` embed. It loads no analytics. Studio booking previously lived here as a branded interstitial that forwarded visitors to an external scheduler; it now happens inline on the homepage. The route is kept so any existing shared `/calendar/` links still resolve.
 
 > **Schedule vs. Calendar.** "Schedule" names the **studio-booking** function (the Cal.com embed at `#schedule`). "Calendar" is reserved for a future **live-events** section (`#calendar`, currently commented out) listing where and when Dyson Hope is playing. Studio bookings run on the shared Cal.com account `jasoncookdesign` (event: [`cal.com/jasoncookdesign/studio`](https://cal.com/jasoncookdesign/studio), 120 / 180 / 240-minute options).
 - **`blog/`** — the writing section, reachable from the **Blog** link in the main navigation (between Works and Links). The pages here are generated; see [Writing (Blog)](#writing-blog).
@@ -199,7 +199,7 @@ Interactive elements (CTAs, platform/store links, social links, release/mix item
 
 A click on a `data-track="true"` element pushes `event: "dysonhope_event"` with those values as `entity`, `action`, `target`, `platform`, `page_type`, `release_title`, `mix_title` and `cta_type`, plus `link_text` and `link_url` (query string and hash removed). A click on any `mailto:` link, tracked or not, also pushes `event: "generate_lead"` with `method: "email"`. Email addresses and phone numbers are never pushed. GTM maps these events to GA4; the GA4 tags need matching event parameters and triggers in the container.
 
-`/calendar/` is a legacy redirect to `/#schedule`. It loads no analytics and keeps the query string, so UTMs on shared links reach the landing page.
+`/calendar/` is a legacy redirect to `/#schedule`. It loads no analytics and, with JavaScript on, keeps the query string, so UTMs on shared links reach the landing page.
 
 ---
 
