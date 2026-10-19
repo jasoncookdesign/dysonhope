@@ -73,7 +73,6 @@ header.nav.scrolled{border-bottom-color:var(--line-2)}
 section{position:relative;border-top:1.5px solid var(--line)}
 .sec-pad{padding:clamp(56px,7vw,104px) 0}
 .sec-head{display:flex;align-items:center;gap:18px;padding:18px 0;border-bottom:1.5px solid var(--line);margin-bottom:var(--xl);flex-wrap:wrap}
-.sec-head .tag{font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;color:var(--accent);text-transform:uppercase}
 .sec-head h2{font-size:clamp(1.6rem,4vw,2.8rem);flex:1;min-width:200px}
 .sec-head .meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;color:var(--text-3);text-transform:uppercase}
 
