@@ -139,8 +139,10 @@ def _rollback(repo: Path) -> None:
 
 def _build(repo: Path) -> None:
     cfg = json.loads((repo / "blog.config.json").read_text(encoding="utf-8"))
-    ctx = {k: cfg.get(k, "") for k in ("site_title", "blog_url", "author")}
-    generator.build(repo / cfg["content"], repo / cfg["templates"], repo / cfg["out"], ctx)
+    ctx = {k: cfg.get(k, "") for k in ("site_title", "blog_url", "author", "cards_url")}
+    cards_dir = repo / cfg["cards_out"] if cfg.get("cards_out") else None
+    generator.build(repo / cfg["content"], repo / cfg["templates"], repo / cfg["out"], ctx,
+                    cards_dir=cards_dir)
 
 
 def _archive(item: Staged, queue: Path) -> None:
@@ -186,7 +188,8 @@ def _run_locked(repo: Path, queue: Path, today: dt.date, push: bool) -> Result:
         if not _git(repo, "status", "--porcelain", "--untracked-files=all"):
             _archive(item, queue)
             return Result("already-live", slug=item.slug, commit=_git(repo, "rev-parse", "HEAD"))
-        _git(repo, "add", "--", *[str(r) for r in files], "blog")
+        _git(repo, "add", "--", *[str(r) for r in files], "blog",
+             *(["assets/cards"] if (repo / "assets/cards").exists() else []))
         _git(repo, "commit", "--quiet", "-m", f'feat(blog): publish "{title}"')
         if push:
             _git(repo, "push", "--quiet", "origin", "main")

@@ -4,5 +4,7 @@
   "out": "blog",
   "site_title": "Dyson Hope",
   "blog_url": "https://dysonhope.com/blog",
-  "author": "Dyson Hope"
+  "author": "Dyson Hope",
+  "cards_out": "assets/cards/blog",
+  "cards_url": "https://dysonhope.com/assets/cards/blog"
 }
