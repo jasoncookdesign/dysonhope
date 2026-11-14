@@ -210,22 +210,28 @@ class TestGolden(unittest.TestCase):
     def test_golden_repo_regenerates_without_diff(self):
         """Rebuilding the committed content must reproduce the committed blog/ byte for byte."""
         cfg = json.loads((REPO / "blog.config.json").read_text())
-        ctx = {k: cfg[k] for k in ("site_title", "blog_url", "author")}
+        ctx = {k: cfg[k] for k in ("site_title", "blog_url", "author", "cards_url")}
         out = pathlib.Path(tempfile.mkdtemp()) / "blog"
-        manifest = bloggen.build(REPO / cfg["content"], REPO / cfg["templates"], out, ctx)
+        cards_out = pathlib.Path(tempfile.mkdtemp()) / "cards"
+        manifest = bloggen.build(REPO / cfg["content"], REPO / cfg["templates"], out, ctx,
+                                 cards_dir=cards_out)
         self.assertGreater(manifest["published"], 20)  # real posts were rendered
         for rel in manifest["written"]:
             self.assertEqual((out / rel).read_bytes(), (REPO / cfg["out"] / rel).read_bytes(),
                              f"generated output differs from committed: {rel}")
+        for slug in (r.split("/")[0] for r in manifest["written"] if "/" in r):
+            self.assertTrue((cards_out / f"{slug}.png").is_file(), f"no card for {slug}")
 
 
 class TestRealTemplatesLoadTracking(unittest.TestCase):
     def test_every_generated_page_loads_the_click_tracker(self):
         """Blog pages carry the same consent loader and click tracker as the hand-authored pages."""
         cfg = json.loads((REPO / "blog.config.json").read_text())
-        ctx = {k: cfg[k] for k in ("site_title", "blog_url", "author")}
+        ctx = {k: cfg[k] for k in ("site_title", "blog_url", "author", "cards_url")}
         out = pathlib.Path(tempfile.mkdtemp()) / "blog"
-        manifest = bloggen.build(REPO / cfg["content"], REPO / cfg["templates"], out, ctx)
+        cards_out = pathlib.Path(tempfile.mkdtemp()) / "cards"
+        manifest = bloggen.build(REPO / cfg["content"], REPO / cfg["templates"], out, ctx,
+                                 cards_dir=cards_out)
         pages = [rel for rel in manifest["written"] if rel.endswith(".html")]
         self.assertGreater(len(pages), 20)
         for rel in pages:

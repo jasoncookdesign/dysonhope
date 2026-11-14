@@ -25,6 +25,8 @@ from xml.sax.saxutils import escape as xml_escape
 import markdown
 import yaml
 
+import cards
+
 _FRONTMATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n?(.*)$", re.DOTALL)
 _TOKEN_RE = re.compile(r"\{\{\s*([a-zA-Z0-9_]+)\s*\}\}")
 _CARD_RE = re.compile(
@@ -194,6 +196,8 @@ def render_post(post: Post, template: str, ctx: dict) -> str:
         "canonical_url": html.escape(canonical, quote=True),
         "cover_image": html.escape(post.cover_image, quote=True),
         "url": html.escape(_post_link(post, ctx), quote=True),
+        "card_url": html.escape(
+            f"{str(ctx.get('cards_url', '')).rstrip('/')}/{post.slug}.png", quote=True),
     })
     return _fill(template, pctx)
 
@@ -258,7 +262,11 @@ def render_feed(posts, ctx: dict) -> str:
 
 # ── build ───────────────────────────────────────────────────────────────────
 
-def build(content_dir, templates_dir, out_dir, ctx) -> dict:
+def _host_path(ctx: dict) -> str:
+    return str(ctx.get("blog_url", "")).split("://", 1)[-1].rstrip("/")
+
+
+def build(content_dir, templates_dir, out_dir, ctx, cards_dir=None) -> dict:
     content_dir = pathlib.Path(content_dir)
     templates_dir = pathlib.Path(templates_dir)
     out_dir = pathlib.Path(out_dir)
@@ -283,6 +291,9 @@ def build(content_dir, templates_dir, out_dir, ctx) -> dict:
         post_dir.mkdir(parents=True, exist_ok=True)
         (post_dir / "index.html").write_text(render_post(post, post_tpl, ctx), encoding="utf-8")
         written.append(f"{post.slug}/index.html")
+        if cards_dir is not None:
+            cards.write_card(pathlib.Path(cards_dir) / f"{post.slug}.png", post.title,
+                             post.excerpt, f"{_host_path(ctx)}/{post.slug}/")
 
     drafts = [p.slug for p in posts if p.draft]
     return {"published": len(written) - 2, "drafts": len(drafts),
@@ -303,11 +314,16 @@ def _load_config(args) -> tuple:
         "site_title": args.site_title or cfg.get("site_title", ""),
         "blog_url": args.blog_url or cfg.get("blog_url", ""),
         "author": args.author or cfg.get("author", ""),
+        "cards_url": cfg.get("cards_url", ""),
     }
     if args.config:
         content = content if pathlib.Path(content).is_absolute() else base / content
         templates = templates if pathlib.Path(templates).is_absolute() else base / templates
         out = out if pathlib.Path(out).is_absolute() else base / out
+    cards_out = cfg.get("cards_out")
+    if cards_out and args.config:
+        cards_out = cards_out if pathlib.Path(cards_out).is_absolute() else base / cards_out
+    ctx["cards_out"] = cards_out
     missing = [n for n, v in [("content", content), ("templates", templates), ("out", out)] if not v]
     if missing:
         sys.exit(f"error: missing required path(s): {', '.join(missing)}")
@@ -326,7 +342,7 @@ def main(argv=None) -> int:
     args = ap.parse_args(argv)
 
     content, templates, out, ctx = _load_config(args)
-    manifest = build(content, templates, out, ctx)
+    manifest = build(content, templates, out, ctx, cards_dir=ctx.get("cards_out"))
     print(f"blog: {manifest['published']} published, {manifest['drafts']} draft(s) skipped "
           f"→ {out}")
     for rel in manifest["written"]:

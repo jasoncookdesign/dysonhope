@@ -5,7 +5,8 @@ Static site for dysonhope.com. GitHub Pages serves it straight from main, so mer
 - Preview: run `python3 -m http.server` from the repo root.
 - Blog: Markdown in `content/blog/` is rendered into `blog/` with `templates/blog/` by `tools/blog/generator.py` (config in `blog.config.json`). Tests: `uv run pytest`.
 - Scheduled posts: `tools/blog/drip.py`, run daily by launchd (`launchd/`), publishes from a local queue that never enters git. See README "Scheduling posts" and `docs/blog-drip/`.
-- Generated, never hand-edit: the pages in `blog/`.
+- Generated, never hand-edit: the pages in `blog/` and the PNGs in `assets/cards/`.
+- Every page except the home page needs its own share card and og:url (see README "Share cards"); `uv run pytest` enforces it.
 - `main` is unprotected on purpose: scheduled blog publishing pushes straight to it. Don't add branch protection unless that publishing moves to PRs. Claude's own changes still go through PRs.
 - Public repo: keep internal ticket IDs and machine names out of commits, code and docs.
 - Copy for the site, blog and social captions: draft with `/writing:voiced-draft`, which loads the Dyson Hope voice profile, the format contract and house style. Draft only; Jason publishes.

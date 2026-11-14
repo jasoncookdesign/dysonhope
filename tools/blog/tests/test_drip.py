@@ -342,3 +342,18 @@ def test_concurrent_run_refused(site):
         with pytest.raises(drip.DripError, match="another run"):
             drip.run(site["repo"], site["queue"], TODAY)
         assert origin_head(site) == before and d.exists()
+
+
+def test_publish_commits_the_posts_share_card(site):
+    cfg_path = site["repo"] / "blog.config.json"
+    cfg = json.loads(cfg_path.read_text())
+    cfg.update({"cards_out": "assets/cards/blog", "cards_url": "https://example.com/assets/cards/blog"})
+    cfg_path.write_text(json.dumps(cfg))
+    git(site["repo"], "commit", "-qam", "cards config")
+    git(site["repo"], "push", "-q", "origin", "main")
+    stage(site["queue"], "2026-10-07", "alpha", "Alpha Post")
+    before = origin_head(site)
+    drip.run(site["repo"], site["queue"], TODAY)
+    changed = git(site["origin"], "diff", "--name-only", before, "main").splitlines()
+    assert "assets/cards/blog/alpha.png" in changed
+    assert origin_file(site, "assets/cards/blog/alpha.png") is not None
