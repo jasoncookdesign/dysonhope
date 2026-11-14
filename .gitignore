@@ -53,3 +53,6 @@ packages/astro/e2e/fixtures/cloudflare/.wrangler/deploy/config.json
 .venv/
 __pycache__/
 .pytest_cache/
+
+# Local working notes
+design/
