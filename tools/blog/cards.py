@@ -27,7 +27,7 @@ ACCENT = (156, 151, 244)
 # Cards for pages that are not generated. The home page keeps the static photo card.
 # name -> (title, description, url label). Copy mirrors each page's og:title/og:description.
 SITE_CARDS = {
-    "links": ("Links", "Founder of SIGIL.ZERO Records. I make music. Then people dance.",
+    "links": ("Links", "Electronic music producer, DJ, and founder of SIGIL.ZERO Records.",
               "dysonhope.com/links/"),
     "press": ("Press Kit", "Bios, mixes, releases, press photos, logos, and booking contact.",
               "dysonhope.com/press/"),
@@ -41,13 +41,13 @@ SITE_CARDS = {
 
 
 def _archivo(size: int, weight: int) -> ImageFont.FreeTypeFont:
-    font = ImageFont.truetype(str(FONTS / "Archivo.ttf"), size)
+    font = ImageFont.truetype(str(FONTS / "Archivo.ttf"), size, layout_engine=ImageFont.Layout.BASIC)
     font.set_variation_by_axes([weight, 100])  # axes: wght, wdth
     return font
 
 
 def _mono(size: int) -> ImageFont.FreeTypeFont:
-    return ImageFont.truetype(str(FONTS / "PlexMono-Medium.ttf"), size)
+    return ImageFont.truetype(str(FONTS / "PlexMono-Medium.ttf"), size, layout_engine=ImageFont.Layout.BASIC)
 
 
 def _wrap(text: str, font, width: int) -> list:
@@ -102,7 +102,10 @@ def render_card(title: str, description: str, label: str) -> bytes:
         d.text((MARGIN, y), line, font=d_font, fill=TEXT_2)
         y += d_lead
 
-    d.text((MARGIN, H - 56), label, font=_mono(24), fill=ACCENT, anchor="ls")
+    foot = _mono(24)
+    while len(label) > 1 and foot.getlength(label) > inner:
+        label = label[:-2].rstrip("-/ ") + "…"
+    d.text((MARGIN, H - 56), label, font=foot, fill=ACCENT, anchor="ls")
 
     out = io.BytesIO()
     im.save(out, "PNG", optimize=True)

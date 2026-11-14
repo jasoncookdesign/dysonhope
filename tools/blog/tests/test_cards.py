@@ -147,3 +147,27 @@ def test_text_never_runs_into_the_url_line(words):
     im = _img(cards.render_card(title, LONG * 3, "dysonhope.com/blog/x/"))
     gap = im.crop((0, 630 - 100, 1200, 630 - 86))
     assert _colors(gap) == {GROUND}, "title/description reach the footer line"
+
+
+def test_fonts_use_the_basic_layout_engine_so_output_matches_across_machines():
+    assert cards._archivo(40, 800).layout_engine == cards.ImageFont.Layout.BASIC
+    assert cards._mono(24).layout_engine == cards.ImageFont.Layout.BASIC
+
+
+def test_a_very_long_label_stays_inside_the_right_margin():
+    im = _img(cards.render_card("Title", "Text.", "dysonhope.com/blog/" + "a-very-long-slug-" * 6))
+    assert _colors(im.crop((1200 - 48, 0, 1200, 630))) <= {GROUND, (156, 151, 244)}
+    assert _colors(im.crop((1200 - 48, 540, 1200, 600))) == {GROUND}
+
+
+def test_checked_in_post_cards_match_the_renderer(tmp_path):
+    import json
+    cfg = json.loads((REPO / "blog.config.json").read_text())
+    ctx = {k: cfg[k] for k in ("site_title", "blog_url", "author", "cards_url")}
+    manifest = generator.build(REPO / cfg["content"], REPO / cfg["templates"], tmp_path / "blog", ctx,
+                               cards_dir=tmp_path / "cards")
+    assert manifest["published"] > 20
+    on_disk = sorted(p.name for p in (REPO / cfg["cards_out"]).glob("*.png"))
+    assert on_disk == sorted(p.name for p in (tmp_path / "cards").glob("*.png")), "orphan or missing post card"
+    for card in (tmp_path / "cards").glob("*.png"):
+        assert (REPO / cfg["cards_out"] / card.name).read_bytes() == card.read_bytes(), f"{card.name} is stale"

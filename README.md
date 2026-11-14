@@ -185,7 +185,7 @@ python3 -m http.server 8000   # then open http://localhost:8000/blog/
 Every page except the home page has its own 1200x630 share card (`og:image` and `twitter:image`) in `assets/cards/`, and its own `og:url`, title, and description. The home page keeps the static photo card. The `/calendar/` redirect page carries its own card too, since link scrapers read its tags without following the redirect.
 
 - **Post cards** (`assets/cards/blog/<slug>.png`) are written by the blog generator from each post's title and excerpt, including the scheduled drip. `blog.config.json` keys `cards_out` (output folder) and `cards_url` (public base URL) control this.
-- **Page cards** (`links`, `press`, `privacy`, `calendar`, `blog`) are defined in `SITE_CARDS` in `tools/blog/cards.py`. After changing one, run `uv run python tools/blog/cards.py` and commit the PNGs.
+- **Page cards** (`links`, `press`, `privacy`, `calendar`, `blog`) are defined in `SITE_CARDS` in `tools/blog/cards.py`. After changing one, run `uv run python tools/blog/cards.py` and commit the PNGs. After changing the card design itself, also regenerate the posts (`uv run python tools/blog/generator.py --config blog.config.json`), which rewrites every post card.
 - **New page:** add its folder, its entry in `SITE_CARDS`, and the Open Graph and Twitter tags pointing at `https://dysonhope.com/assets/cards/<name>.png`. `uv run pytest` fails for any page without a card.
 - Cards are set in Archivo and IBM Plex Mono, vendored in `tools/blog/fonts/` (SIL OFL licences alongside). Output is deterministic.
 - Anchor links such as `/#schedule` cannot have their own card, because scrapers ignore the fragment.

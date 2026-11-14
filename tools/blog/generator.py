@@ -197,7 +197,8 @@ def render_post(post: Post, template: str, ctx: dict) -> str:
         "cover_image": html.escape(post.cover_image, quote=True),
         "url": html.escape(_post_link(post, ctx), quote=True),
         "card_url": html.escape(
-            f"{str(ctx.get('cards_url', '')).rstrip('/')}/{post.slug}.png", quote=True),
+            f"{str(ctx['cards_url']).rstrip('/')}/{post.slug}.png" if ctx.get("cards_url") else "",
+            quote=True),
     })
     return _fill(template, pctx)
 
